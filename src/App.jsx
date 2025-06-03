@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import './App.css'
+import SignIn from './pages/SignIn'
 
 const App = () => {
     const [user, setUser] = useState(null)
@@ -30,6 +31,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signIn" element={<SignIn setUser={setUser}/>} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </main>

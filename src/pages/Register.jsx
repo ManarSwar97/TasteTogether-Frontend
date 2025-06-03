@@ -33,6 +33,7 @@ const Register = () => {
       typeOfFood: formValues.typeOfFood
     })
     setFormValues(initialState)
+    navigate('/signIn')
   }
 
   return (
