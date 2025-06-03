@@ -13,7 +13,7 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(payload)
-    navigate('/')
+    navigate('/main')
   }
   return (
     <div className="col signin">

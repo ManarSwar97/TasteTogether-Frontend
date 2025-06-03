@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  let navigate = useNavigate()
   const initialState = {
     firstName: '',
     lastName: '',
@@ -12,6 +14,7 @@ const Register = () => {
     image:'',
     typeOfFood:''
   }
+
 
   const [formValues, setFormValues] = useState(initialState)
 
@@ -33,7 +36,7 @@ const Register = () => {
       typeOfFood: formValues.typeOfFood
     })
     setFormValues(initialState)
-    navigate('/signIn')
+    navigate('/signin')
   }
 
   return (

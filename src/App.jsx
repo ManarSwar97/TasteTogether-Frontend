@@ -4,6 +4,8 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import './App.css'
 import SignIn from './pages/SignIn'
+import MainHome from './pages/MainHome'
+import { CheckSession } from './services/Auth'
 
 const App = () => {
     const [user, setUser] = useState(null)
@@ -18,20 +20,30 @@ const App = () => {
   const handleLogOut = () => {
     //Reset all auth related state and clear localStorage
     setUser(null)
-    localStorage.clear()
-  }
+    localStorage.removeItem('token')  }
 
   //to not logout when the user reload the page its just like session
-  const checkToken = async () => {
+const checkToken = async () => {
+  try {
     const user = await CheckSession()
-    setUser(user)
+    if (user) {
+      setUser(user)
+    } else {
+      handleLogOut()
+    }
+  } catch (error) {
+    console.error('Session check failed:', error)
+    handleLogOut()
   }
+}
+
   return (
     <>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signIn" element={<SignIn setUser={setUser}/>} />
+          <Route path="/main" element={<MainHome user={user}/>} />
+          <Route path="/signin" element={<SignIn setUser={setUser}/>} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </main>
