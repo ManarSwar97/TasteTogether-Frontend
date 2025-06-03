@@ -16,8 +16,10 @@ const SignIn = ({ setUser }) => {
     navigate('/main')
   }
   return (
-    <div className="col signin">
-      <form className="col" onSubmit={handleSubmit}>
+    <div className="signin-container">
+      <h1 className="signin-heading">Sign In</h1>
+      <p className="signin-subtext">Sign in to continue </p>
+      <form className="signin-form" onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
           <input
@@ -38,7 +40,10 @@ const SignIn = ({ setUser }) => {
             required
           />
         </div>
-        <button disabled={!formValues.username || !formValues.password}>
+        <button
+          className="signin-button"
+          disabled={!formValues.username || !formValues.password}
+        >
           Sign In
         </button>
       </form>
