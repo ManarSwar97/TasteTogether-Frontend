@@ -22,6 +22,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     //its prevent to reload the default or initial again.
     e.preventDefault()
+    console.log(formValues)
     await RegisterUser({
       username: formValues.username,
       firstName: formValues.firstName,
