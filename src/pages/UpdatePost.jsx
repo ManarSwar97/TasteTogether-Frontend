@@ -46,11 +46,11 @@ const handleSubmit = async (event) => {
         Authorization: `Bearer ${token}`
       }
     })
-  const newPost = response.data
-  addPost(newPost)
-  console.log(newPost)
-  setPostState(initialState)
-  navigate('/main')
+      const newPost = response.data
+      addPost(newPost)
+      console.log(newPost)
+      setPostState(initialState)
+      navigate('/main')
 
   }
     return (
