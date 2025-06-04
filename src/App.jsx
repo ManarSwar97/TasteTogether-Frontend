@@ -5,12 +5,20 @@ import Home from './pages/Home'
 import './App.css'
 import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
+
+import NewPost from './pages/NewPost'
+
 import Sidebar from './components/SideBar'
 import RoomSidebar from './components/RoomSidebar'
+
 import { CheckSession } from './services/Auth'
 
 const App = () => {
     const [user, setUser] = useState(null)
+
+    const [posts, setPosts] = useState([])
+
+
     const navigate = useNavigate()
 
   useEffect(() => {
@@ -41,6 +49,10 @@ const checkToken = async () => {
     handleLogOut()
   }
 }
+  const addPost = (newPost) => {
+    setPosts(prev => [...prev, newPost])
+  }
+
 
   return (
     <>
@@ -49,9 +61,10 @@ const checkToken = async () => {
         <Routes>
           
           <Route path="/" element={<Home />} />
-          <Route path="/main" element={<MainHome user={user}/>} />
           <Route path="/signin" element={<SignIn setUser={setUser}/>} />
           <Route path="/register" element={<Register />} />
+          <Route path="/main" element={<MainHome user={user} posts={posts} />} />
+          <Route path="/new" element={<NewPost addPost={addPost} />} />
         </Routes>
       </main>
     <RoomSidebar />
