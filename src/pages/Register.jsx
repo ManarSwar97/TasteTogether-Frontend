@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Register = () => {
   let navigate = useNavigate()
@@ -40,8 +40,10 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="register-container">
+      <h2 className="register-heading">Create New Account</h2>
+      <p className="register-login-link">already registered? <Link to="/signin">Sign In</Link> </p>
+      <form className="register-form" onSubmit={handleSubmit}>
         {/* USERNAME */}
         <div className="input-wrapper"> 
           <label htmlFor="username">Username</label>
@@ -132,7 +134,7 @@ const Register = () => {
           />
         </div>
 
-        <button
+        <button className="register-button"
           disabled={
             !formValues.email ||
             (!formValues.password &&
