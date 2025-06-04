@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom"
 const Post = ({ post }) => {
-  return (
-    <div className="post-card">
-      <img src={`http://localhost:3001/uploads/${post.postImage}`} alt="Post" />
-      <p style={{ color: 'black' }}>{post.postDescription}</p>
-      <Link to="/update">
+return (
+  <div className="post-card">
+    <img src={`http://localhost:3001/uploads/${post.postImage}`} alt="Post" />
+    <p style={{ color: 'black' }}>{post.postDescription}</p>
+    
+    <Link to={`/update/${post._id}`}>
       <button>Edit Post</button>
-      </Link>
-      <Link to="/delete">
+    </Link>
+    
+    <Link to={`/delete/${post._id}`}>
       <button>Delete Post</button>
-      </Link>
-    </div>
-  )
+    </Link>
+  </div>
+)
 }
-
 export default Post

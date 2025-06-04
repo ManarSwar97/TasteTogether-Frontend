@@ -16,7 +16,9 @@ const MainHome = ({user}) => {
     }
 
     fetchPosts()
-  }, []) 
+  }, [])
+  
+
   return (
     <div className="main-home">
       <div className="add-post">

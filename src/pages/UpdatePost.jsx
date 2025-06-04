@@ -1,14 +1,28 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from 'axios'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 const UpdatePost = ({ addPost }) =>{
-    let navigate = useNavigate()
     const initialState = {
         postImage: '',
         postDescription: '',
     }
     const [postState, setPostState] = useState(initialState)
-        const handleChange = (event) => {
+    let navigate = useNavigate()
+    const { post_id } = useParams()
+
+
+    useEffect(()=>{
+      const getPost = async() =>{
+        const response = await axios.get(`http://localhost:3001/posts/${post_id}`)
+        setPostState({
+          postImage: '',
+          postDescription: response.data.postDescription
+        })
+      }
+      getPost()
+    }, [post_id])
+
+    const handleChange = (event) => {
         const { id, value, files } = event.target
         setPostState({
             ...postState,
@@ -19,19 +33,22 @@ const UpdatePost = ({ addPost }) =>{
 const handleSubmit = async (event) => {
   event.preventDefault()
   const formData = new FormData()
-  formData.append('postImage', postState.postImage)
-  formData.append('postDescription', postState.postDescription)
-
-  const token = localStorage.getItem('token')
-
-  const response = await axios.post('http://localhost:3001/posts', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${token}`
+    if (postState.postImage) {
+      formData.append('postImage', postState.postImage)
     }
-  })
+      formData.append('postDescription', postState.postDescription)
+
+    const token = localStorage.getItem('token')
+
+    const response = await axios.put(`http://localhost:3001/posts/${post_id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }
+    })
   const newPost = response.data
   addPost(newPost)
+  console.log(newPost)
   setPostState(initialState)
   navigate('/main')
 
@@ -51,7 +68,7 @@ const handleSubmit = async (event) => {
         onChange={handleChange}
         value={postState.postDescription}
       />
-      <button type="submit">Create Post</button>
+      <button type="submit">Update Post</button>
     </form>
   )
 }

@@ -5,12 +5,10 @@ import Home from './pages/Home'
 import './App.css'
 import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
-
 import NewPost from './pages/NewPost'
-
+import UpdatePost from './pages/UpdatePost'
 import Sidebar from './components/SideBar'
 import RoomSidebar from './components/RoomSidebar'
-
 import { CheckSession } from './services/Auth'
 
 const App = () => {
@@ -65,6 +63,8 @@ const checkToken = async () => {
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<MainHome user={user} posts={posts} />} />
           <Route path="/new" element={<NewPost addPost={addPost} />} />
+          <Route path="/update/:post_id" element={<UpdatePost addPost={addPost}/>} />
+
         </Routes>
       </main>
     <RoomSidebar />
