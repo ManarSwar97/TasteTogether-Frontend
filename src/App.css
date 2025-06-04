@@ -333,4 +333,36 @@ main {
   font-size: 1.5rem;
   margin: 0;
 }
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 40px auto; /* Top/bottom: 40px, Center horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  background-color: #fff;
+  text-align: center;
+}
 
+.post-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.post-card p {
+  color: black;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+/* .main-home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-align: center;
+} */
