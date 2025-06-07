@@ -25,7 +25,6 @@ const RecipeListAPI = () => {
   const handleSearch = async (search) => {
     if (!search.trim()) {
       Recipes()
-      return
     }
 
     //the result of the search bar
@@ -49,10 +48,7 @@ const RecipeListAPI = () => {
 
   return (
     <div className="recipe-list-container">
-      <h1 className="recipe-list-title">Recipes</h1>
-      {error && <div className="error-message">{error}</div>}
-      {/* show the error */}
-
+      <h1 className="recipe-list-title">Recipes</h1>  
       {/* the recipeSearchBar call */}
       <RecipeSearchBar onSearch={handleSearch} />
 
@@ -71,14 +67,13 @@ const RecipeListAPI = () => {
             .map((key) => recipe[key].trim())
 
           return (
-            <div className="recipe-card" key={recipe.idMeal}>
+            <Link to={`/recipe/${recipe.idMeal}`} className="recipe-card" key={recipe.idMeal}>
               <h2 className="recipe-name">{recipe.strMeal}</h2>
               <p className="recipe-category">{recipe.strCategory}</p>
               <img
                 className="recipe-image"
                 src={recipe.strMealThumb}
                 alt={recipe.strMeal}
-                loading="lazy"
               />
               <p className="recipe-instructions">{recipe.strInstructions}</p>
               <h4>Ingredients:</h4>
@@ -89,7 +84,7 @@ const RecipeListAPI = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Link> 
           )
         })}
       </div>
