@@ -7,11 +7,13 @@ import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
 
 import NewPost from './pages/NewPost'
+import RecipeListAPI from './components/RecipeListAPI'
 
 import Sidebar from './components/SideBar'
 import RoomSidebar from './components/RoomSidebar'
 
 import { CheckSession } from './services/Auth'
+import RandomRecipe from './pages/RandomRecipe'
 
 const App = () => {
     const [user, setUser] = useState(null)
@@ -65,9 +67,11 @@ const checkToken = async () => {
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<MainHome user={user} posts={posts} />} />
           <Route path="/new" element={<NewPost addPost={addPost} />} />
+          <Route path="/recipes" element={<RecipeListAPI />} />
+          <Route path="/random" element={<RandomRecipe/>} />
         </Routes>
       </main>
-    <RoomSidebar />
+    <RoomSidebar user={user} />
 
     </>
   )

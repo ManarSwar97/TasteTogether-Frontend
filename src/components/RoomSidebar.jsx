@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const RoomSidebar = () => {
+const RoomSidebar = ({user}) => {
   return (
     <div className="room-bar">
       <div className="room-bar-links">
