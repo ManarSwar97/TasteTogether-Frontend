@@ -458,3 +458,46 @@ h4 {
 .random-container a{
   color: white;
 }
+.comment-section {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+}
+
+.comment-section h4 {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.comment-container {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #333;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment-form label {
+  color: black;
+}
+
+.comment-form input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.comment-form button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}

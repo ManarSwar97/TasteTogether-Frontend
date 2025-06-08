@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
+import Comment from "./Comment"
 const Post = ({post}) => {
 const currentUserId = localStorage.getItem('userId');
 const [isDeleted, setIsDeleted] = useState(false)
@@ -63,6 +64,7 @@ return (
     <button onClick={handleLike} disabled={liked}>
       {liked ? 'Liked' : 'Like'} ({likeCount})
     </button>
+    <Comment postId={post._id}/>
   </div>
 )
 }
