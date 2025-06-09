@@ -5,13 +5,17 @@ import Home from './pages/Home'
 import './App.css'
 import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
-
 import NewPost from './pages/NewPost'
+
 import RecipeListAPI from './components/RecipeListAPI'
+
+
+import UpdatePost from './pages/UpdatePost'
 
 import Sidebar from './components/SideBar'
 import RoomSidebar from './components/RoomSidebar'
-
+import Restaurant from './pages/Restuarant'
+import RandomRestaurant from './pages/RandomRestuarant'
 import { CheckSession } from './services/Auth'
 import RandomRecipe from './pages/RandomRecipe'
 import RecipeDetails from './pages/RecipeDetails'
@@ -97,6 +101,9 @@ const App = () => {
             element={<UpdateRecipe addRecipe={addRecipe} />}
           />
           <Route path="/recipes/random" element={<RandomUserRecipe />} />
+          <Route path="/update/:post_id" element={<UpdatePost addPost={addPost}/>} />
+          <Route path="/restaurants" element={<Restaurant />} />
+          <Route path="/random" element={<RandomRestaurant />} />
         </Routes>
       </main>
       <RoomSidebar user={user} />

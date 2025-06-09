@@ -331,6 +331,166 @@ main {
   font-size: 1.5rem;
   margin: 0;
 }
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 40px auto; /* Top/bottom: 40px, Center horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.post-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.post-card p {
+  color: black;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+/* .main-home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-align: center;
+} */
+.rest-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .rest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rest-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.rest-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.rest-card:hover {
+  transform: scale(1.05);
+}
+
+.rest-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-weight: 500;
+  color: #555;
+}
+.value {
+  color: #1a73e8; /* Google blue */
+  font-weight: 500;
+}
+.random-rest {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.random-container {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  color: #bbbbbb;
+  margin-bottom: 20px;
+}
+
+.random-btn,
+.direction-btn {
+  background-color: #2196f3;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.random-container a{
+  color: white;
+}
+.comment-section {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+}
+
+.comment-section h4 {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.comment-container {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #333;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment-form label {
+  color: black;
+}
+
+.comment-form input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
 
 /* Reset */
 * {
@@ -1061,4 +1221,12 @@ main {
 .random-recipe-card p {
   margin: 8px 0;
   color: #555;
+.comment-form button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+
 }
