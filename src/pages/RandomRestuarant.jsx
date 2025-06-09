@@ -24,7 +24,7 @@ const RandomRestaurant = () => {
       try {
         //fetch data from the API
         const response = await axios.get(
-          "https://www.data.gov.bh/api/records/1.0/search/?dataset=restaurants0&rows=100"
+          "https://www.data.gov.bh/api/records/1.0/search/?dataset=restaurants0&rows=1600"
         );
         // extract the records from the response
         const records = response.data.records;

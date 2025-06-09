@@ -37,22 +37,30 @@ const handleSubmit = async (event) => {
 
   }
     return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="postImage">Post Image:</label>
+      <form className="new-post-form" onSubmit={handleSubmit}>
+      <label htmlFor="postImage" className="form-label">Post Image:</label>
+      <label htmlFor="postImage" className="custom-file-upload">
+        Choose Image
+      </label>
       <input
         id="postImage"
         type="file"
         onChange={handleChange}
+        className="file-input"
       />
-      <label htmlFor="postDescription">Post Description:</label>
-      <input
-        id="postDescription"
-        type="text"
-        onChange={handleChange}
-        value={postState.postDescription}
-      />
-      <button type="submit">Create Post</button>
-    </form>
+
+        <label htmlFor="postDescription">Post Description:</label>
+        <input
+          id="postDescription"
+          type="text"
+          onChange={handleChange}
+          value={postState.postDescription}
+          className="form-input"
+        />
+
+        <button type="submit" className="form-button">Create Post</button>
+      </form>
+
   )
 }
 
