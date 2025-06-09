@@ -103,7 +103,7 @@ const App = () => {
           <Route path="/recipes/random" element={<RandomUserRecipe />} />
           <Route path="/update/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
-          <Route path="/random" element={<RandomRestaurant />} />
+          <Route path="/randomRestaurant" element={<RandomRestaurant />} />
         </Routes>
       </main>
       <RoomSidebar user={user} />
