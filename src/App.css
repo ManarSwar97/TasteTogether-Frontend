@@ -453,7 +453,7 @@ h4 {
   display: inline-block;
   transition: background-color 0.3s ease;
 }
-.random-container a{
+.random-container a {
   color: white;
 }
 .comment-section {
@@ -490,7 +490,6 @@ h4 {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
-
 
 /* Reset */
 * {
@@ -647,11 +646,10 @@ main {
 .recipe-list-container {
   display: block;
   width: fit-content;
-  max-width: 100%;       
-  margin: 0 auto;      
+  max-width: 100%;
+  margin: 0 auto;
   padding: 20px;
 }
-
 
 .recipe-list-title {
   text-align: center;
@@ -873,7 +871,7 @@ main {
   padding: 1.5rem;
   background-color: #fff8f0;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
 }
@@ -897,7 +895,7 @@ main {
   height: auto;
   margin: 1rem auto;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .recipe-detail-container h4 {
@@ -925,7 +923,7 @@ main {
   margin-right: auto;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .new-recipe-form {
@@ -968,7 +966,7 @@ main {
 }
 
 .btn-submit-recipe {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px;
   font-size: 1rem;
@@ -1079,7 +1077,7 @@ main {
 .recipe-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1.2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -1112,7 +1110,7 @@ main {
   max-width: 100%;
   border-radius: 8px;
   object-fit: cover;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
 }
 
 .card-buttons {
@@ -1146,11 +1144,11 @@ main {
 }
 
 .btn-random-recipe {
-  background-color: #28a745;   
-  color: white;              
+  background-color: #28a745;
+  color: white;
   border: none;
   padding: 10px 20px;
-  margin-left: 10px;        
+  margin-left: 10px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
@@ -1158,7 +1156,7 @@ main {
 }
 
 .btn-random-recipe:hover {
-  background-color: #218838;   
+  background-color: #218838;
 }
 .random-user-recipe-container {
   max-width: 700px;
@@ -1208,7 +1206,7 @@ main {
   background-color: #f8f8f8;
   border-radius: 10px;
   padding: 25px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   margin: 20px auto;
 }
@@ -1221,12 +1219,13 @@ main {
 .random-recipe-card p {
   margin: 8px 0;
   color: #555;
+}
+
 .comment-form button {
   padding: 8px 12px;
   border: none;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border-radius: 6px;
   cursor: pointer;
-
 }

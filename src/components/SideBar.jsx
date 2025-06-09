@@ -2,8 +2,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Sidebar = ({ handleLogOut, user }) => {
   const navigate = useNavigate()
-const Sidebar = ({ handleLogOut , user }) => {
-  const navigate = useNavigate();
   const logout = () => {
     handleLogOut()
     navigate('/signin')
