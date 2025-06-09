@@ -1,19 +1,33 @@
-import { useState } from "react"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const RandomRecipe = () => {
   const [randomRecipe, setRandomRecipe] = useState(null)
+  const [error, setError] = useState('')
   const navigate = useNavigate()
+
+  //for the recipe youtube video
+  const getYoutubeId = (url) => {
+    try {
+      if (!url) return null //return null if no URL exist
+      const videoUrl = new URL(url) //parse URL to string and gives an object
+      return videoUrl.searchParams.get('v') //search for the query parameter which is here v
+    } catch {
+      return null
+    }
+  }
 
   // random recipe function
   const handleRandomRecipe = async () => {
     try {
+      //axios call to get random recipe
       const response = await axios.get('http://localhost:3001/recipe/random')
+      //check if the response.data.meals (array of recipes) exist then take it from the array otherwise set the random as null
       const random = response.data.meals ? response.data.meals[0] : null
-      setRandomRecipe(random)
+      setRandomRecipe(random) //set the Random Recipe
     } catch (error) {
-      throw error
+      setError('No recipe found. Please try again!')
     }
   }
 
@@ -26,11 +40,10 @@ const RandomRecipe = () => {
         Get Random Recipe
       </button>
 
-      {/* Back button  */}
+      {/* Back button */}
       <button onClick={() => navigate('/recipes')} className="back-button">
         Back to Recipes
       </button>
-
 
       {/* Display random recipe */}
       {randomRecipe && (
@@ -56,6 +69,21 @@ const RandomRecipe = () => {
                 <li key={index}>{randomRecipe[key]}</li>
               ))}
           </ul>
+
+          {/* Embed YouTube video if available */}
+          {getYoutubeId(randomRecipe.strYoutube) && (
+            <div className="video-container">
+              <h4>Watch the Recipe Video:</h4>
+              <iframe
+                width="100%"
+                height="400"
+                src={`https://www.youtube.com/embed/${getYoutubeId(randomRecipe.strYoutube)}`}
+                title="Recipe Video"
+                allow="autoplay; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          )}
         </div>
       )}
     </div>

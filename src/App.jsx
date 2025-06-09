@@ -15,11 +15,14 @@ import RoomSidebar from './components/RoomSidebar'
 import { CheckSession } from './services/Auth'
 import RandomRecipe from './pages/RandomRecipe'
 import RecipeDetails from './pages/RecipeDetails'
-
+import UserRecipe from './components/UserRecipe'
+import NewRecipe from './components/NewRecipe'
+import UpdateRecipe from './pages/UpdateRecipe'
+import RandomUserRecipe from './pages/RandomUserRecipe'
 const App = () => {
   const [user, setUser] = useState(null)
-
   const [posts, setPosts] = useState([])
+  const [recipes, setRecipes] = useState([])
 
   const navigate = useNavigate()
 
@@ -55,6 +58,10 @@ const App = () => {
     setPosts((prev) => [...prev, newPost])
   }
 
+  const addRecipe = (NewRecipe) => {
+    setRecipes((prev) => [...prev, NewRecipe])
+  }
+
   return (
     <>
       <Sidebar handleLogOut={handleLogOut} user={user} />
@@ -71,6 +78,25 @@ const App = () => {
           <Route path="/recipes" element={<RecipeListAPI />} />
           <Route path="/random" element={<RandomRecipe />} />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route
+            path="/user/recipes"
+            element={
+              <UserRecipe
+                user={user}
+                setRecipes={setRecipes}
+                recipes={recipes}
+              />
+            }
+          />
+          <Route
+            path="/recipes/new"
+            element={<NewRecipe addRecipe={addRecipe} user={user} />}
+          />
+          <Route
+            path="/update/:recipe_id"
+            element={<UpdateRecipe addRecipe={addRecipe} />}
+          />
+          <Route path="/recipes/random" element={<RandomUserRecipe />} />
         </Routes>
       </main>
       <RoomSidebar user={user} />

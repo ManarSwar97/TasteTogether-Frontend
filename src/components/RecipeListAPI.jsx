@@ -24,6 +24,7 @@ const RecipeListAPI = () => {
   //for the search recipe
   const handleSearch = async (search) => {
     if (!search.trim()) {
+      //trim to remove any spaces
       Recipes()
     }
 
@@ -42,13 +43,13 @@ const RecipeListAPI = () => {
       setRecipes([])
     }
   }
-
+  //show loading or not found
   if (recipes === null) return <div>Loading recipes...</div>
   if (recipes.length === 0) return <div>No recipes found.</div>
 
   return (
     <div className="recipe-list-container">
-      <h1 className="recipe-list-title">Recipes</h1>  
+      <h1 className="recipe-list-title">Recipes</h1>
       {/* the recipeSearchBar call */}
       <RecipeSearchBar onSearch={handleSearch} />
 
@@ -60,14 +61,32 @@ const RecipeListAPI = () => {
       {/* preview the recipes with the ingredients */}
       <div className="recipes-grid">
         {recipes.map((recipe) => {
+          // make a list of ingredients from the recipe object
+          // the recipe object has keys like strIngredient1, strIngredient2, ...
+          // some might be empty or null, so filter them but before use Object.keys to make an array of the object fields
+
           const ingredients = Object.keys(recipe)
             .filter(
-              (key) => key.startsWith('strIngredient') && recipe[key]?.trim()
+              //its works with array and return a new array thats why i used Object.keys
+
+              //recipe[key] to access the value of the given key
+
+              (key) =>
+                key.startsWith(
+                  //startsWith is a method that return true or false
+
+                  //recipe[key] to access the value of the given key '?.' chaining operator to check if it not undefined or null before trim(), if its not it will return undefined
+                  'strIngredient'
+                ) && recipe[key]?.trim()
             )
             .map((key) => recipe[key].trim())
 
           return (
-            <Link to={`/recipe/${recipe.idMeal}`} className="recipe-card" key={recipe.idMeal}>
+            <Link
+              to={`/recipe/${recipe.idMeal}`}
+              className="recipe-card"
+              key={recipe.idMeal}
+            >
               <h2 className="recipe-name">{recipe.strMeal}</h2>
               <p className="recipe-category">{recipe.strCategory}</p>
               <img
@@ -84,7 +103,7 @@ const RecipeListAPI = () => {
                   </li>
                 ))}
               </ul>
-            </Link> 
+            </Link>
           )
         })}
       </div>

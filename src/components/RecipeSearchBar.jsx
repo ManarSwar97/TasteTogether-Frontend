@@ -3,9 +3,10 @@ import { useState } from 'react'
 const RecipeSearchBar = ({ onSearch }) => {
   const [search, setSearch] = useState('')
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onSearch(search)
+
+  const handleSubmit = (event) => {
+    event.preventDefault() //prevent page reload on form 
+    onSearch(search) //onSearch handleSearch function from RecipeListAPI
   }
 
   return (
@@ -14,7 +15,7 @@ const RecipeSearchBar = ({ onSearch }) => {
         type="text"
         placeholder="Search recipes..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)} // update state on typing
         className="search-input"
       />
       <button type="submit" className="search-button">
