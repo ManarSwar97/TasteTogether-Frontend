@@ -1,10 +1,12 @@
-import { Link , useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
+const Sidebar = ({ handleLogOut, user }) => {
+  const navigate = useNavigate()
 const Sidebar = ({ handleLogOut , user }) => {
   const navigate = useNavigate();
   const logout = () => {
     handleLogOut()
-    navigate('/signin'); // or '/' or any public route
+    navigate('/signin')
   }
   return (
     <div className="sidebar">
@@ -12,15 +14,13 @@ const Sidebar = ({ handleLogOut , user }) => {
         <Link to="/">Home</Link>
         <Link to="/restaurants">Restaurants</Link>
         <Link to="/recipes">Recipes</Link>
+        <Link to="/user/recipes">Users Recipes</Link>
       </div>
       <div className="sidebar-bottom">
-        {user && (
-          <button onClick={logout}>Sign Out</button>
-        )}
+        {user && <button onClick={logout}>Sign Out</button>}
       </div>
     </div>
   )
 }
-
 
 export default Sidebar

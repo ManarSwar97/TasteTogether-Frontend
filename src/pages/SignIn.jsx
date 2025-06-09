@@ -3,7 +3,7 @@ import { SignInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
-  const initialState = { email: '', password: '' }
+  const initialState = { username: '', password: '' }
   const [formValues, setFormValues] = useState(initialState)
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.id]: e.target.value })
@@ -12,7 +12,14 @@ const SignIn = ({ setUser }) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
-    setUser(payload)
+    setUser(payload.user || payload)
+    const userId = payload?.user?._id || payload?.id
+    if (userId) {
+      localStorage.setItem('userId', userId)
+    }
+    if (payload?.token) {
+      localStorage.setItem('token', payload.token)
+    }
     navigate('/main')
   }
   return (

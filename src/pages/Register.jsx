@@ -21,6 +21,7 @@ const Register = () => {
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.id]: e.target.value })
   }
+  
 
   const handleSubmit = async (e) => {
     //its prevent to reload the default or initial again.
@@ -119,7 +120,7 @@ const Register = () => {
           <input
             onChange={handleChange}
             id="image"
-            type="text"
+            type="file"
             value={formValues.image}
           />
         </div>
