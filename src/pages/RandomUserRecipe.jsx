@@ -85,7 +85,7 @@ const RandomUserRecipe = () => {
               <h3>Recipe by: {randomRecipe.user.username}</h3>
               {randomRecipe.user.image && (
                 <img
-                  className="user-image"
+                  className="user-random-recipe-image"
                   src={`http://localhost:3001/uploads/${randomRecipe.user.image}`}
                   alt={randomRecipe.user.username}
                 />

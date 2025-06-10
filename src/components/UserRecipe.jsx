@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 
+
 const UserRecipe = ({ user, recipes, setRecipes }) => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token') // get token from localStorage for authentication
@@ -83,12 +84,12 @@ const UserRecipe = ({ user, recipes, setRecipes }) => {
                 <div className="recipe-user-info">
                   {recipe.user?.image && (
                     <img
-                      className="profile-image"
+                      className="user-recipe-profile-image"
                       src={`http://localhost:3001/uploads/${recipe.user.image}`}
                       alt={`${recipe.user.username}'s profile`}
                     />
                   )}
-                  <span className="username">
+                  <span className="username-user-recipe">
                     {recipe.user?.username || 'Unknown User'}
                   </span>
                 </div>
