@@ -1763,7 +1763,7 @@ main {
   border-radius: 6px;
   font-size: 1.1rem;
   font-weight: 600;
-=======
+}
 @keyframes floatUp {
   0% {
     opacity: 1;
@@ -1881,7 +1881,8 @@ main {
 }
 
 .room-bar-header {
-  text-align: center; 
+  text-align: center; }
+  
 .random-btn:hover {
   background-color: #45a049;
 }
