@@ -11,42 +11,72 @@ const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    image:'',
-    typeOfFood:''
+    image: '',
+    typeOfFood: ''
   }
-
+  const [errors, setErrors] = useState({})
 
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.id]: e.target.value })
+    const { id, type, files, value } = e.target
+    if (type === 'file') {
+      setFormValues({ ...formValues, [id]: files[0] })
+    } else {
+      setFormValues({ ...formValues, [id]: value })
+    }
   }
-  
 
   const handleSubmit = async (e) => {
-    //its prevent to reload the default or initial again.
     e.preventDefault()
-    console.log(formValues)
-    await RegisterUser({
-      username: formValues.username,
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      email: formValues.email,
-      password: formValues.password,
-      image: formValues.image,
-      typeOfFood: formValues.typeOfFood
-    })
+    setErrors({}) 
+    try{
+    const formData = new FormData()
+    formData.append('username', formValues.username)
+    formData.append('firstName', formValues.firstName)
+    formData.append('lastName', formValues.lastName)
+    formData.append('email', formValues.email)
+    formData.append('password', formValues.password)
+    formData.append('confirmPassword', formValues.confirmPassword)
+    formData.append('typeOfFood', formValues.typeOfFood)
+
+    if (formValues.image) {
+      formData.append('profileImage', formValues.image) // key matches multer middleware
+    }
+
+    await RegisterUser(formData) // Your RegisterUser function must support sending FormData
     setFormValues(initialState)
     navigate('/signin')
+  }
+  catch (error) {
+    const msg =
+      error?.response?.data?.msg || 
+      error?.msg || 
+      error?.message || 
+      'Registration failed. Please try again.'
+
+       if (msg.includes('username')) {
+          setErrors({ username: msg })
+        } else if (msg.includes('Password and confirm password')) {
+          setErrors({ password: msg })
+        } else {
+          setErrors({ general: msg })
+        }
+        }
   }
 
   return (
     <div className="register-container">
       <h2 className="register-heading">Create New Account</h2>
-      <p className="register-login-link">already registered? <Link to="/signin">Sign In</Link> </p>
+
+      <p className="register-login-link">
+        already registered? <Link to="/signin">Sign In</Link>{' '}
+      </p>
+      {errors.general && <p className="error-message">{errors.general}</p>}
       <form className="register-form" onSubmit={handleSubmit}>
         {/* USERNAME */}
-        <div className="input-wrapper"> 
+        
+        <div className="input-wrapper">
           <label htmlFor="username">Username</label>
           <input
             onChange={handleChange}
@@ -55,9 +85,10 @@ const Register = () => {
             value={formValues.username}
             required
           />
+            {errors.username && <p className="error-message">{errors.username}</p>}
         </div>
-{/* FIRST NAME */}
-    <div className="input-wrapper">
+        {/* FIRST NAME */}
+        <div className="input-wrapper">
           <label htmlFor="firstName">First Name</label>
           <input
             onChange={handleChange}
@@ -67,7 +98,7 @@ const Register = () => {
             required
           />
         </div>
-      {/* LAST NAME */}
+        {/* LAST NAME */}
         <div className="input-wrapper">
           <label htmlFor="lastName">Last Name</label>
           <input
@@ -90,7 +121,7 @@ const Register = () => {
             required
           />
         </div>
-          {/* PASSWORD */}
+        {/* PASSWORD */}
         <div className="input-wrapper">
           <label htmlFor="password">Password</label>
           <input
@@ -102,7 +133,7 @@ const Register = () => {
           />
         </div>
 
-         {/* CONFIRM PASSWORD */}
+        {/* CONFIRM PASSWORD */}
         <div className="input-wrapper">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
@@ -112,16 +143,16 @@ const Register = () => {
             value={formValues.confirmPassword}
             required
           />
+            {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
- {/* IMAGE */}
-<div className="input-wrapper">
+        {/* IMAGE */}
+        <div className="input-wrapper">
           <label htmlFor="image">Profile Image</label>
           <input
             onChange={handleChange}
             id="image"
             type="file"
-            value={formValues.image}
           />
         </div>
 
@@ -135,12 +166,17 @@ const Register = () => {
           />
         </div>
 
-        <button className="register-button"
+        <button
+          className="register-button"
           disabled={
-            !formValues.email ||
-            (!formValues.password &&
-              formValues.password === formValues.confirmPassword)
-          }
+              !formValues.username ||
+              !formValues.firstName ||
+              !formValues.lastName ||
+              !formValues.email ||
+              !formValues.password ||
+              !formValues.confirmPassword ||
+              formValues.password !== formValues.confirmPassword
+            }
         >
           Register
         </button>

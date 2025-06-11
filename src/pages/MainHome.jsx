@@ -2,9 +2,12 @@ import { Link } from "react-router-dom"
 import Post from "../components/Post"
 import { useState, useEffect } from "react"
 import axios from 'axios'
+import UsersSearchBar from "../components/UsersSearchBar"
 
+import { useNavigate } from "react-router-dom"
 const MainHome = ({user}) => {
   const [newPosts, setNewPosts] = useState([])
+  let navigate = useNavigate()
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -17,15 +20,30 @@ const MainHome = ({user}) => {
 
     fetchPosts()
   }, [])
-  
+  if (!user) {
+    // show message if user is not signed in
+    return (
+      <div className="protected-message">
+        <h3 className="protected-title">
+          Oops! You must be signed in to see your posts!
+        </h3>
+        <button className="btn btn-signin" onClick={() => navigate('/signin')}>
+          Sign In
+        </button>
+      </div>
+    )
+  }  
 
   return (
     <div className="main-home">
+          {/* Users Search Bar */}
+      <div className="users-search-bar">
+        <UsersSearchBar />
+      </div>
       <div className="add-post">
         <Link to="/new">
         <button>Add a New Post</button>
         </Link>
-        <h2>Posts</h2>
         {newPosts.map((post) => (
           <Post key={post._id} post={post} />
         ))}

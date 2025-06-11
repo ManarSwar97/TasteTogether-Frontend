@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import RestuarantPost from "../components/RestuarantPost";
 import RandomRestaurant from "./RandomRestuarant";
-import { Link } from "react-router-dom";
 const Restaurant = () =>{
     const [restaurants , setRestuarant] = useState([])
     useEffect(()=>{
@@ -15,9 +14,7 @@ const Restaurant = () =>{
 
 return (
   <div>
-    <Link to="/randomRestaurant">
-    <button>Show Random Restaurant</button>
-    </Link>
+
     <RestuarantPost restaurants={restaurants} />
   </div>
 );

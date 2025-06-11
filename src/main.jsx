@@ -1,4 +1,5 @@
-import { StrictMode } from 'react'
+// Fix for "global is not defined" error
+window.global = window
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'

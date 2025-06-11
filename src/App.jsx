@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import './App.css'
+import './stylesheet/mainHome.css'
+import './stylesheet/restaurant.css'
+
 import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
 import NewPost from './pages/NewPost'
 
 import RecipeListAPI from './components/RecipeListAPI'
-
 
 import UpdatePost from './pages/UpdatePost'
 
@@ -23,6 +25,17 @@ import UserRecipe from './components/UserRecipe'
 import NewRecipe from './components/NewRecipe'
 import UpdateRecipe from './pages/UpdateRecipe'
 import RandomUserRecipe from './pages/RandomUserRecipe'
+import UsersList from './pages/UsersList'
+import Profile from './pages/Profile'
+import EditProfile from './pages/EditProfile'
+import UsersSearchBar from './components/UsersSearchBar'
+import Join from './pages/Join'
+import Room from './components/Room'
+import CreateRoom from './pages/CreateRoom'
+import RoomsList from './pages/RoomsList'
+
+
+import ShowRandonProfile from './pages/ShowRandomProfile'
 const App = () => {
   const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([])
@@ -74,6 +87,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/users" element={<UsersList />} />
+          <Route path="/profile/:user_id" element={<Profile />} />
+          <Route path="/edit-profile/:user_id" element={<EditProfile />} />
+          <Route path="/search-users" element={<UsersSearchBar />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/rooms" element={<RoomsList />} />
+          <Route path="/create" element={<CreateRoom />} />
+          <Route path="/room/:roomId" element={<Room user={user}/>} />
           <Route
             path="/main"
             element={<MainHome user={user} posts={posts} />}
@@ -101,9 +122,14 @@ const App = () => {
             element={<UpdateRecipe addRecipe={addRecipe} />}
           />
           <Route path="/recipes/random" element={<RandomUserRecipe />} />
+          <Route
+            path="/update/:post_id"
+            element={<UpdatePost addPost={addPost} />}
+          />
           <Route path="/updatePost/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/randomRestaurant" element={<RandomRestaurant />} />
+          <Route path="/profile/randomProfile" element={<ShowRandonProfile />} />
         </Routes>
       </main>
       <RoomSidebar user={user} />

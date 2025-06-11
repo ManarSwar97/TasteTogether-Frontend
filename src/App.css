@@ -66,7 +66,7 @@ html {
 }
 
 main {
-  background-color: #f5f5f5;
+  background-color: #FFEFD5;
   box-sizing: border-box;
   overflow-y: auto;
 }
@@ -308,8 +308,6 @@ main {
   cursor: not-allowed;
 }
 
-
-
 .signed-in-message {
   background-color: #ffffff;
   padding: 20px 25px;
@@ -323,39 +321,39 @@ main {
   font-size: 1.5rem;
   margin: 0;
 }
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
 .post-card {
-  border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 16px;
-  margin: 40px auto; /* Top/bottom: 40px, Center horizontally */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  padding: 2rem;
+  margin: 40px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
   background-color: #fff;
   text-align: center;
+  position: relative;
+  border: 1px solid #ccc;
 }
 
 .post-card img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  height: 400px;
+  border-radius: 10px;
+  margin-bottom: 16px;
   object-fit: cover;
 }
 
 .post-card p {
   color: black;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 1rem;
 }
-/* .main-home{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-align: center;
-} */
+
+
 .rest-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -399,89 +397,78 @@ main {
   color: #555;
 }
 .value {
-  color: #1a73e8; /* Google blue */
+  color: #1a73e8; 
   font-weight: 500;
 }
 .random-rest {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 80vh;
+  background-color: #f9fafb;
+  padding: 20px;
 }
 
+/* Main content box */
 .random-container {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  text-align: center;
-  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   max-width: 500px;
+  width: 100%;
+  text-align: center;
 }
 
-h2 {
+/* Restaurant name */
+.random-container h2 {
   font-size: 24px;
-  margin-bottom: 10px;
-}
-
-h4 {
-  color: #bbbbbb;
-  margin-bottom: 20px;
-}
-
-.random-btn,
-.direction-btn {
-  background-color: #2196f3;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 10px 0;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-.random-container a {
-  color: white;
-}
-.comment-section {
-  margin-top: 20px;
-  padding: 15px;
-  border-top: 1px solid #ccc;
-}
-
-.comment-section h4 {
-  margin-bottom: 10px;
-  color: black;
-}
-
-.comment-container {
-  background-color: #f5f5f5;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 8px;
+  font-weight: 700;
   color: #333;
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
 }
 
-.comment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Category text */
+.random-container h4 {
+  font-size: 18px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 24px;
 }
 
-.comment-form label {
-  color: black;
+/* Directions link */
+.direction-btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 14px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.comment-form input {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+/* Generate button */
+.random-btn {
+  background-color: #1a73e8;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
 }
+
+.random-btn:hover {
+  background-color: #0f5bb5;
+}
+
 
 /* Reset */
 * {
@@ -569,7 +556,7 @@ body {
 /* Main content area */
 main {
   flex-grow: 1;
-  background-color: #f5f5f5;
+  background-color: #FFEFD5;
   padding: 20px;
   overflow-y: auto; /* enable vertical scroll if needed */
   height: 100vh; /* ensure fills full height */
@@ -1222,4 +1209,684 @@ main {
   cursor: pointer;
 }
 
+.food-anim {
+  animation: floatUp 1s ease forwards;  
+}
+.users-list-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
 
+.users-list-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #4a90e2;
+}
+
+.users-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.user-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.user-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.user-profile-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+  border: 2px solid #4a90e2;
+  box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+}
+
+.user-card h3 {
+  margin: 0.3rem 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.user-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+.profile-page {
+  max-width: 900px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #555;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 posts per row */
+  gap: 0.4rem;
+}
+
+.post-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 aspect ratio */
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+.post-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-image:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-post-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+
+
+.card-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-edit {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #2563eb;
+}
+
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
+}
+
+.btn-close {
+  background-color: #6b7280;
+  color: white;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.btn-close:hover {
+  background-color: #4b5563;
+}
+
+.post-likes {
+  margin-bottom: 0;
+}
+
+.comments-section {
+  margin-top: 0;
+}
+.recipe-user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.user-recipe-profile-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-random-recipe-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.sidebar-user {
+  cursor: pointer;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.sidebar-user-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #555;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.edit-profile-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-profile-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.edit-profile-form input[type='text'],
+.edit-profile-form input[type='email'],
+.edit-profile-form input[type='file'] {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.edit-profile-form input[type='text']:focus,
+.edit-profile-form input[type='email']:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.edit-profile-form input[type='file'] {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.edit-profile-form button {
+  padding: 0.7rem 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-profile-form button:hover {
+  background-color: #0056b3;
+}
+
+.btn-edit-profile {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.7rem 1.2rem;
+  background-color: rgba(128, 128, 128, 0.05);
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid rgba(128, 128, 128, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s,
+    border-color 0.3s;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-edit-profile:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: #333;
+  border-color: rgba(128, 128, 128, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-edit-profile:active {
+  background-color: rgba(128, 128, 128, 0.4);
+  border-color: rgba(128, 128, 128, 0.6);
+  color: #222;
+  transform: translateY(0);
+}
+
+.search-users-container {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 15px 0;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.search-users-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.search-users-container input[type='text'] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.user-item:hover {
+  background-color: #f0f0f0;
+}
+
+.user-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  width: 100%;
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid #ccc;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.rooms-list {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.rooms-list__create-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.rooms-list__create-link:hover {
+  text-decoration: underline;
+}
+
+.rooms-list__title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.rooms-list__empty {
+  font-style: italic;
+  color: #777;
+}
+
+.rooms-list__items {
+  list-style: none;
+  padding: 0;
+}
+
+.rooms-list__item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.rooms-list__item-title {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.rooms-list__item-description {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.rooms-list__join-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.rooms-list__join-button:hover {
+  background-color: #218838;
+}
+
+.create-room-form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.create-room-title {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  color: #333;
+  text-align: center;
+}
+
+.create-room-input,
+.create-room-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.create-room-input:focus,
+.create-room-textarea:focus {
+  outline: none;
+  border-color: #0077ff;
+  background-color: #fff;
+}
+
+.create-room-textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: Arial, sans-serif;
+}
+
+.create-room-error {
+  color: #d9534f;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.create-room-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+=======
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.5);
+  }
+}
+.random-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-container {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 360px;
+}
+
+.profile-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.profile-card {
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4caf50;
+  margin-bottom: 1rem;
+}
+
+.profile-card h3 {
+  font-size: 1.3rem;
+  color: #222;
+  margin: 0.3rem 0;
+}
+
+.profile-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.random-btn {
+  padding: 0.7rem 1.2rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-room-submit:disabled {
+  background-color: #99c2ff;
+  cursor: not-allowed;
+}
+
+.create-room-submit:not(:disabled):hover {
+  background-color: #005fcc;
+}
+
+.rooms-list__join-button {
+  background-color: #007bff; /* blue */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.rooms-list__join-button:hover {
+  background-color: #0056b3;
+}
+
+
+.rooms-list__join-button--inactive:hover {
+  background-color: #d3d3d3;
+}
+
+
+
+.rooms-list__item--inactive {
+  background-color: #f0f0f0;
+  
+  opacity: 0.7;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.rooms-list__join-button--inactive {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+  border: none;
+}
+
+.room-bar-header {
+  text-align: center; 
+.random-btn:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+}
