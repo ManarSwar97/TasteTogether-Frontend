@@ -14,6 +14,7 @@ const Register = () => {
     image: '',
     typeOfFood: ''
   }
+  const [errors, setErrors] = useState({})
 
   const [formValues, setFormValues] = useState(initialState)
 
@@ -28,13 +29,15 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    setErrors({}) 
+    try{
     const formData = new FormData()
     formData.append('username', formValues.username)
     formData.append('firstName', formValues.firstName)
     formData.append('lastName', formValues.lastName)
     formData.append('email', formValues.email)
     formData.append('password', formValues.password)
+    formData.append('confirmPassword', formValues.confirmPassword)
     formData.append('typeOfFood', formValues.typeOfFood)
 
     if (formValues.image) {
@@ -45,15 +48,34 @@ const Register = () => {
     setFormValues(initialState)
     navigate('/signin')
   }
+  catch (error) {
+    const msg =
+      error?.response?.data?.msg || 
+      error?.msg || 
+      error?.message || 
+      'Registration failed. Please try again.'
+
+       if (msg.includes('username')) {
+          setErrors({ username: msg })
+        } else if (msg.includes('Password and confirm password')) {
+          setErrors({ password: msg })
+        } else {
+          setErrors({ general: msg })
+        }
+        }
+  }
 
   return (
     <div className="register-container">
       <h2 className="register-heading">Create New Account</h2>
+
       <p className="register-login-link">
         already registered? <Link to="/signin">Sign In</Link>{' '}
       </p>
+      {errors.general && <p className="error-message">{errors.general}</p>}
       <form className="register-form" onSubmit={handleSubmit}>
         {/* USERNAME */}
+        
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
           <input
@@ -63,6 +85,7 @@ const Register = () => {
             value={formValues.username}
             required
           />
+            {errors.username && <p className="error-message">{errors.username}</p>}
         </div>
         {/* FIRST NAME */}
         <div className="input-wrapper">
@@ -120,6 +143,7 @@ const Register = () => {
             value={formValues.confirmPassword}
             required
           />
+            {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
         {/* IMAGE */}
@@ -145,10 +169,14 @@ const Register = () => {
         <button
           className="register-button"
           disabled={
-            !formValues.email ||
-            (!formValues.password &&
-              formValues.password === formValues.confirmPassword)
-          }
+              !formValues.username ||
+              !formValues.firstName ||
+              !formValues.lastName ||
+              !formValues.email ||
+              !formValues.password ||
+              !formValues.confirmPassword ||
+              formValues.password !== formValues.confirmPassword
+            }
         >
           Register
         </button>
