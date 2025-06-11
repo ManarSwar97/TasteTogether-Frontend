@@ -54,11 +54,11 @@ return (
     <img src={`http://localhost:3001/uploads/${post.postImage}`} alt="Post" />
     <p style={{ color: 'black' }}>{post.postDescription}</p>
     
-    <Link to={`/update/${post._id}`}>
+    <Link to={`/updatePost/${post._id}`}>
       <button>Edit Post</button>
     </Link>
 
-    <Link to={`/delete/${post._id}`}>
+    <Link to={`/deletePost/${post._id}`}>
       <button onClick={handleDelete}>Delete Post</button>
     </Link>
     <button onClick={handleLike} disabled={liked}>

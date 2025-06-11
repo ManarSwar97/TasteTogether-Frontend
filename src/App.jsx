@@ -121,6 +121,7 @@ const App = () => {
             path="/update/:post_id"
             element={<UpdatePost addPost={addPost} />}
           />
+          <Route path="/updatePost/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/randomRestaurant" element={<RandomRestaurant />} />
         </Routes>
