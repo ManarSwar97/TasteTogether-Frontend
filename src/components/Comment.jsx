@@ -76,10 +76,8 @@ const onClickHandler = async () => {
       {visibleComments.map((text) => (
         <div className="comment-container" key={text._id}>
           <div className='post-user-info'>
-            <img src={'https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg'} 
-              alt="user profile" 
-              style={{ width: 32, height: 32, borderRadius: '50%' }} />
-            <p>{text.user?.username}</p>
+            <img src={`http://localhost:3001/uploads/${text.user.image}`} alt="user profile" />
+            <p>{text.user.username}</p>
           </div>
           <p className="comment-content">{text.comment}</p>
         </div>

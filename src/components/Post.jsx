@@ -1,4 +1,4 @@
-import { FaEllipsisV, FaEdit, FaTrash,FaHeart, FaRegHeart } from 'react-icons/fa'
+import { FaEllipsisV, FaEdit, FaTrash,FaHeart, FaRegHeart, FaComment} from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import axios from 'axios'
@@ -13,8 +13,7 @@ const Post = ({ post }) => {
   const [likeCount, setLikeCount] = useState(post.likes.length)
   const [menuOpen, setMenuOpen] = useState(false)
   const [foodEmojis, setFoodEmojis] = useState([]);
-console.log("Current User ID:", currentUserId)
-console.log("Post User ID:", post?.user?._id)
+  const [showComments, setShowComments] = useState(false)
 
 
   const handleDelete = async () => {
@@ -51,17 +50,43 @@ console.log("Post User ID:", post?.user?._id)
       console.error("Error liking post:", error)
     }
   }
-console.log(post)
   if (isDeleted) return null
 
   return (
     <div className="post-card">
       <div className='post-user-info'>
-        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="user profile" />
+        <img src={`http://localhost:3001/uploads/${post.user.image}`} alt="user profile" />
         <p>{post.user.username}</p>
       </div>
       <img src={`http://localhost:3001/uploads/${post.postImage}`}/>
+    <div className="like-comment-buttons">
+          <button onClick={handleLike} disabled={liked} className="like-button">
+            <span className="like-content">
+              {liked ? <FaHeart color="red" size={24} /> : <FaRegHeart color="gray" size={24} />}
+              <span className="like-count">{likeCount}</span>
+            </span>
+          </button>
+          <button onClick={() => setShowComments(prev => !prev)} className="comment-button">
+            <FaComment color="gray" size={24} style={{ marginLeft: '-20px' }} />
+        </button>
+
+          {foodEmojis.map((emoji, index) => (
+            <span
+              key={index}
+              className="food-anim"
+              style={{
+                position: 'absolute',
+                left: `${30 + index * 20}px`,
+                top: '-50px',
+                fontSize: '24px',
+                pointerEvents: 'none'
+              }}>
+              {emoji}
+            </span>
+          ))}
+    </div>
       <p>{post.postDescription}</p>
+    {showComments && <Comment postId={post._id} />}
     {post.user && String(post.user._id) === String(currentUserId) && (
         <div className="kebab-menu">
           <button onClick={() => setMenuOpen(!menuOpen)}>
@@ -90,35 +115,7 @@ console.log(post)
             </div>
           )}
         </div>
-      )}
-
-    <div style={{ position: 'relative', display: 'inline-block' }}>
-          <button onClick={handleLike} disabled={liked} className="like-button">
-            <span className="like-content">
-              {liked ? <FaHeart color="red" /> : <FaRegHeart />}
-              <span className="like-count">{likeCount}</span>
-            </span>
-          </button>
-
-          {foodEmojis.map((emoji, index) => (
-            <span
-              key={index}
-              className="food-anim"
-              style={{
-                position: 'absolute',
-                left: `${30 + index * 20}px`,
-                top: '-50px',
-                fontSize: '24px',
-                pointerEvents: 'none'
-              }}>
-              {emoji}
-            </span>
-          ))}
-        </div>
-
-
-
-      <Comment postId={post._id} />
+      )}    
     </div>
   )
 }
