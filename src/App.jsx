@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import './App.css'
@@ -28,6 +28,13 @@ import RandomUserRecipe from './pages/RandomUserRecipe'
 import UsersList from './pages/UsersList'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
+import UsersSearchBar from './components/UsersSearchBar'
+import Join from './pages/Join'
+import Room from './components/Room'
+import CreateRoom from './pages/CreateRoom'
+import RoomsList from './pages/RoomsList'
+
+
 import ShowRandonProfile from './pages/ShowRandomProfile'
 const App = () => {
   const [user, setUser] = useState(null)
@@ -83,6 +90,11 @@ const App = () => {
           <Route path="/users" element={<UsersList />} />
           <Route path="/profile/:user_id" element={<Profile />} />
           <Route path="/edit-profile/:user_id" element={<EditProfile />} />
+          <Route path="/search-users" element={<UsersSearchBar />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/rooms" element={<RoomsList />} />
+          <Route path="/create" element={<CreateRoom />} />
+          <Route path="/room/:roomId" element={<Room user={user}/>} />
           <Route
             path="/main"
             element={<MainHome user={user} posts={posts} />}

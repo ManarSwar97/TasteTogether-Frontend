@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import UsersSearchBar from '../components/UsersSearchBar'
 import RandomProfile from './RandomProfile'
 const UsersList = () => {
   //to set the user state
@@ -21,6 +22,9 @@ const UsersList = () => {
 
   return (
     <div className="users-list-container">
+      {/* Users Search Bar */}
+      <div className="users-search-bar">
+        <UsersSearchBar />
       <div className='random-profile-button'>
         <Link to="/profile/randomProfile">
         <button>Show Random Profiles</button>
@@ -44,7 +48,9 @@ const UsersList = () => {
               className="user-profile-image"
             />
             <h3>{user.username}</h3>
-            <p>{user.firstName} {user.lastName}</p>
+            <p>
+              {user.firstName} {user.lastName}
+            </p>
           </Link>
         ))}
       </div>
