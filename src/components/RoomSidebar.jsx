@@ -1,12 +1,38 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const RoomSidebar = ({ user }) => {
+  const [activeRooms, setActiveRooms] = useState([])
+
+  useEffect(() => {
+    const ActiveRooms = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/room')
+        const rooms = response.data.rooms || []
+        const filteredRooms = rooms.filter(room => room.isActive)
+        setActiveRooms(filteredRooms)
+      } catch (error) {
+        console.error('Failed to fetch rooms:', error)
+      }
+    }
+
+    ActiveRooms()
+  }, [])
+
   return (
     <div className="room-bar">
       <div className="room-bar-links">
-        <Link to="/rooms">Room 1</Link>
-        <Link to="/rooms/2">Room 2</Link>
-        <Link to="/rooms/3">Room 3</Link>
+        <h3 className="room-bar-header">Rooms</h3>
+        {activeRooms.length === 0 ? (
+          <p>No active rooms</p>
+        ) : (
+          activeRooms.map(room => (
+            <Link key={room._id || room.roomId} to={`/room/${room.roomId}`}>
+              {room.roomName}
+            </Link>
+          ))
+        )}
       </div>
 
       <div className="room-bar-bottom">

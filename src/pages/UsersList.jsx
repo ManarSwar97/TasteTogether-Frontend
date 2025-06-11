@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import UsersSearchBar from '../components/UsersSearchBar'
 const UsersList = () => {
   //to set the user state
   const [users, setUsers] = useState([])
@@ -21,6 +21,10 @@ const UsersList = () => {
 
   return (
     <div className="users-list-container">
+      {/* Users Search Bar */}
+      <div className="users-search-bar">
+        <UsersSearchBar />
+      </div>
       <h2>All Users</h2>
       <div className="users-cards-grid">
         {users.map((user) => (
@@ -39,7 +43,9 @@ const UsersList = () => {
               className="user-profile-image"
             />
             <h3>{user.username}</h3>
-            <p>{user.firstName} {user.lastName}</p>
+            <p>
+              {user.firstName} {user.lastName}
+            </p>
           </Link>
         ))}
       </div>
