@@ -1,7 +1,11 @@
 import Client from './api'
-export const RegisterUser = async (data) => {
+export const RegisterUser = async (formData) => {
   try {
-    const res = await Client.post('/auth/register', data)
+    const res = await Client.post('/auth/register', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
     return res.data
   } catch (error) {
     throw error
@@ -17,12 +21,21 @@ export const SignInUser = async (data) => {
     throw error
   }
 }
+
 export const CheckSession = async () => {
   try {
-    // Checks if the current token if it exists is valid
-    const res = await Client.get('/auth/session')
+    const token = localStorage.getItem('token')
+    if (!token) return null
+
+    const res = await Client.get('/auth/session', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+
     return res.data
   } catch (error) {
     throw error
   }
 }
+
