@@ -25,7 +25,7 @@ import RandomUserRecipe from './pages/RandomUserRecipe'
 import UsersList from './pages/UsersList'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
-
+import ShowRandonProfile from './pages/ShowRandomProfile'
 const App = () => {
   const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([])
@@ -114,6 +114,7 @@ const App = () => {
           <Route path="/updatePost/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/randomRestaurant" element={<RandomRestaurant />} />
+          <Route path="/profile/randomProfile" element={<ShowRandonProfile />} />
         </Routes>
       </main>
       <RoomSidebar user={user} />
