@@ -32,7 +32,7 @@ const Profile = () => {
         )
 
         setProfileUser(userResponse.data.user) // set the profile user
-        setUserPosts(postsResponse.data) // set the user posts
+        setUserPosts(postsResponse.data) // set `the` user posts
       } catch (err) {
         setError('Failed to load profile or posts')
       }

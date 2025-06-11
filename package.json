@@ -15,11 +15,20 @@
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1",
+    "simple-peer": "^9.11.1",
+    "socket.io-client": "^4.8.1"
+
     "react-icons": "^5.5.0",
+<<<<<<< HEAD
     "react-router-dom": "^7.6.1",
     "simple-peer": "^9.11.1",
     "socket.io-client": "^4.8.1",
     "uuid": "^11.1.0"
+=======
+    "react-router-dom": "^7.6.1"
+
+>>>>>>> f79fc5fec99c906ffd038c02c9b3e74835a8ee3c
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",

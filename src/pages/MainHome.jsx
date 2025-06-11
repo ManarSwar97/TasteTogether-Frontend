@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import Post from "../components/Post"
 import { useState, useEffect } from "react"
 import axios from 'axios'
+import UsersSearchBar from "../components/UsersSearchBar"
+
 import { useNavigate } from "react-router-dom"
 const MainHome = ({user}) => {
   const [newPosts, setNewPosts] = useState([])
@@ -34,6 +36,10 @@ const MainHome = ({user}) => {
 
   return (
     <div className="main-home">
+          {/* Users Search Bar */}
+      <div className="users-search-bar">
+        <UsersSearchBar />
+      </div>
       <div className="add-post">
         <Link to="/new">
         <button>Add a New Post</button>
