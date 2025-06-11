@@ -24,7 +24,7 @@ const RestuarantPost = ({ restaurants }) => {
 
   return (
     <div>
-      <h1 className="random-title">Random Restaurants</h1>
+      <h1 className="random-title">All Restaurants</h1>
       <div className="top-section">
         <Form className="search-rest">
           <Form.Control
@@ -59,7 +59,7 @@ const RestuarantPost = ({ restaurants }) => {
                   target="_blank"
                   rel="noopener noreferrer"
 
-                  style={{ color: "#1a73e8" }}
+                  style={{ color: "white" }}
                 >
                   Get Directions
                 </a></button>
