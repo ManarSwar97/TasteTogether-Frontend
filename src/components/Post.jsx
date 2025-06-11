@@ -109,6 +109,7 @@ const Post = ({ post }) => {
                   setMenuOpen(false)
                 }}
                 className="delete-post"
+                style={{color: '#806D58'}}
               >
                 <FaTrash /> Delete
               </button>
