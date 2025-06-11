@@ -324,38 +324,33 @@ main {
   margin: 0;
 }
 .post-card {
-  border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 16px;
-  margin: 40px auto; /* Top/bottom: 40px, Center horizontally */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  padding: 2rem;
+  margin: 40px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
   background-color: #fff;
   text-align: center;
+  position: relative;
+  border: 1px solid #ccc;
 }
 
 .post-card img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  height: 400px;
+  border-radius: 10px;
+  margin-bottom: 16px;
   object-fit: cover;
 }
 
 .post-card p {
   color: black;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 1rem;
 }
-/* .main-home{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-align: center;
-} */
+
+
 .rest-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -402,52 +397,76 @@ main {
   color: #1a73e8; /* Google blue */
   font-weight: 500;
 }
+/* Container wrapping the whole component */
 .random-rest {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 80vh;
+  background-color: #f9fafb;
+  padding: 20px;
 }
 
+/* Main content box */
 .random-container {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  text-align: center;
-  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   max-width: 500px;
+  width: 100%;
+  text-align: center;
 }
 
-h2 {
+/* Restaurant name */
+.random-container h2 {
   font-size: 24px;
-  margin-bottom: 10px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
 }
 
-h4 {
-  color: #bbbbbb;
-  margin-bottom: 20px;
+/* Category text */
+.random-container h4 {
+  font-size: 18px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 24px;
 }
 
-.random-btn,
+/* Directions link */
 .direction-btn {
-  background-color: #2196f3;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 10px 0;
-  text-decoration: none;
   display: inline-block;
-  transition: background-color 0.3s ease;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 14px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
-.random-container a {
+
+/* Generate button */
+.random-btn {
+  background-color: #1a73e8;
   color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
 }
+
+.random-btn:hover {
+  background-color: #0f5bb5;
+}
+
 .comment-section {
   margin-top: 20px;
   padding: 15px;
@@ -461,27 +480,59 @@ h4 {
 
 .comment-container {
   background-color: #f5f5f5;
-  padding: 10px;
-  margin-bottom: 8px;
+  padding: 15px 20px;      
+  margin-bottom: 10px;       
   border-radius: 8px;
   color: #333;
+  font-size: 12px;          
+  line-height: 1.1;         
+  max-width: 700px;      
+  display: flex;
+  align-items: center;      
+  gap: 8px;                 
+}
+
+.comment-content {
+  margin: 0;
+  flex: 1;      
 }
 
 .comment-form {
   display: flex;
-  flex-direction: column;
   gap: 8px;
-}
-
-.comment-form label {
-  color: black;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .comment-form input {
-  padding: 8px;
-  border-radius: 6px;
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
 }
+
+.comment-form input:focus {
+  border-color: #007bff;
+}
+
+.comment-form button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.comment-form button:hover {
+  background-color: #0056b3;
+}
+
 
 /* Reset */
 * {
@@ -1222,4 +1273,380 @@ main {
   cursor: pointer;
 }
 
+.food-anim {
+  animation: floatUp 1s ease forwards;  
+}
 
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.5);
+  }
+}
+.kebab-menu {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+}
+
+.kebab-menu button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+
+.kebab-second-div {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  width: 140px;
+  overflow: hidden;
+}
+.kebab-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+
+.kebab-option:hover {
+  background: #f0f0f0;
+}
+.delete-post {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.delete-post:hover {
+  background: #f0f0f0; 
+}
+.post-user-info {
+  display: flex;
+  align-items: flex-start; 
+  gap: 8px;
+  padding: 8px;
+}
+
+.post-user-info img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black;
+  align-self: flex-start; 
+}
+
+.post-user-info p {
+  margin: 0; 
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 40px; 
+  vertical-align: top; 
+}
+.new-post-form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10%;
+}
+
+.new-post-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  outline-offset: 2px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.file-input {
+  display: none; /* hide native file input */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 18px;
+  color: white;
+  background-color: #007bff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+.form-button {
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.form-button:hover {
+  background-color: #1e7e34;
+}
+.update-post{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form container */
+.update-post-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Labels */
+.post-image,
+.post-description {
+  font-weight: 600;
+  color: #333;
+}
+
+/* File input */
+.image-input {
+  font-size: 14px;
+}
+
+/* Text input */
+.description-input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.description-input:focus {
+  border-color: #007bff;
+}
+
+/* Submit button */
+.update-post-button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.update-post-button:hover {
+  background-color: #0056b3;
+}
+/* Search section */
+/* Top section layout */
+.top-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Search input field */
+.search-rest {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 16px;
+}
+
+.search-retaurant {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  font-size: 17px;
+  background-color: #fff;
+  outline: none;
+  color: #333; 
+}
+
+/* Grid layout for restaurant cards */
+.rest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* Restaurant card styling */
+.rest-card {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Restaurant name styling */
+.rest-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  font-family: 'Georgia', serif;
+  text-align: center;
+}
+
+/* Category / subtype */
+.value {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+/* Direction button */
+.direction-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background-color: #e8f0fe;
+}
+
+.direction-button a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #1a73e8;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Random restaurant button */
+.random-button,
+.random-restaurant {
+  width: 100%;
+  max-width: 450px;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background-color: #1a73e8;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+.random-title{
+  font-size: 40px;
+  text-align: center;
+  color: black;
+
+}
+.like-button {
+  background-color: #d6d9db;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.like-button:hover:not(:disabled) {
+  background-color: #989ca0;
+}
+
+.like-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.like-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart-icon {
+  font-size: 18px;
+  color: #555;
+}
+
+.heart-icon.liked {
+  color: #e63946; 
+}
+
+.like-count {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}

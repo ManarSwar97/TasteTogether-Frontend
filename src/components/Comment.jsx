@@ -73,11 +73,15 @@ const onClickHandler = async () => {
 
   return (
     <div className="comment-section">
-      <h4>Comments</h4>
-
       {visibleComments.map((text) => (
         <div className="comment-container" key={text._id}>
-          {text.comment}
+          <div className='post-user-info'>
+            <img src={'https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg'} 
+              alt="user profile" 
+              style={{ width: 32, height: 32, borderRadius: '50%' }} />
+            <p>{text.user?.username}</p>
+          </div>
+          <p className="comment-content">{text.comment}</p>
         </div>
       ))}
       {/*If there are more than 3 comments, show the "View all" button  */}
@@ -88,13 +92,13 @@ const onClickHandler = async () => {
       )}
         {/*input text to write the comments */}
       <div className="comment-form">
-        <label htmlFor="comment">Leave a comment</label>
         <input
           type="text"
           name="comment"
           id="comment"
           value={comment}
           onChange={onChangeHandler}
+          placeholder="leave a comment"
         />
         <button onClick={onClickHandler}>Submit</button>
       </div>

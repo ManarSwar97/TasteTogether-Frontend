@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap"; 
-
+import { Link } from "react-router-dom";
 const RestuarantPost = ({ restaurants }) => {
   const [search, setSearch] = useState("");
   const seen = new Set();
@@ -24,18 +24,25 @@ const RestuarantPost = ({ restaurants }) => {
 
   return (
     <div>
-      <Form>
-        <Form.Control
-          type="text"
-          placeholder="Search Restaurant"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </Form>
+      <h1 className="random-title">Random Restaurants</h1>
+      <div className="top-section">
+        <Form className="search-rest">
+          <Form.Control
+            type="text"
+            placeholder="Search Restaurant"
+            value={search}
+            className="search-retaurant"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </Form>
 
+        <Link to="/randomRestaurant">
+          <button className="random-button">Show Random Restaurant</button>
+        </Link>
+      </div>
       <div className="rest-grid">
         {filteredRestaurants.map((restaurant) => {
-
+          
             //getting restuarant coordinates and display it
           const [longitude, latitude] = restaurant.geometry.coordinates;
           const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
@@ -44,22 +51,18 @@ const RestuarantPost = ({ restaurants }) => {
             <div key={restaurant.recordid} className="rest-card">
               <h3 className="rest-name">{restaurant.fields.name}</h3>
               <p>
-                <span className="label">Subtype:</span>{" "}
-                <span className="value">{restaurant.fields.subtype}</span>
+                <span className="value">Category: {restaurant.fields.subtype}</span>
               </p>
               <p>
-                <span className="label">Block:</span>{" "}
-                <span className="value">{restaurant.fields.block}</span>
-              </p>
-              <p>
-                <a
+               <button className="direction-button"> <a
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+
                   style={{ color: "#1a73e8" }}
                 >
                   Get Directions
-                </a>
+                </a></button>
               </p>
             </div>
           );

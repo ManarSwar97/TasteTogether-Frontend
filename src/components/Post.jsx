@@ -1,71 +1,121 @@
+import { FaEllipsisV, FaEdit, FaTrash,FaHeart, FaRegHeart } from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Comment from "./Comment"
-const Post = ({post}) => {
-const currentUserId = localStorage.getItem('userId');
-const [isDeleted, setIsDeleted] = useState(false)
-const [liked, setLiked] = useState(post.likes.includes(currentUserId));
-const [likeCount, setLikeCount] = useState(post.likes.length);
-let navigate = useNavigate()
 
-const handleDelete = async () => {
-  try {
-    const token = localStorage.getItem('token')
-    await axios.delete(`http://localhost:3001/posts/${post._id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    setIsDeleted(true)
-    navigate('/main')
-  } catch (error) {
-    console.error("Error deleting post:", error)
-  }
-}
+const Post = ({ post }) => {
+  const currentUserId = localStorage.getItem('userId')
+  const token = localStorage.getItem('token')
 
-const handleLike = async () => {
-  try {
-    const token = localStorage.getItem('token')
-    console.log("Liking post id:", post._id);
-    console.log("Token:", token);
-    console.log("current user id ", currentUserId)
-    const response = await axios.post(
-      `http://localhost:3001/posts/${post._id}/like`,
-      {},
-      {
+  const [isDeleted, setIsDeleted] = useState(false)
+  const [liked, setLiked] = useState(post.likes.includes(currentUserId))
+  const [likeCount, setLikeCount] = useState(post.likes.length)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [foodEmojis, setFoodEmojis] = useState([]);
+
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/posts/${post._id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }
-    );
-    const totalLikes = parseInt(response.data, 10);
-    setLikeCount(totalLikes);
-    setLiked(true); 
-  } catch (error) {
-    console.error("Error liking post:", error);
+      })
+      setIsDeleted(true) 
+    } catch (error) {
+      console.error("Error deleting post:", error)
+    }
   }
-};
+
+  const handleLike = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/posts/${post._id}/like`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      const totalLikes = parseInt(response.data, 10)
+      setLikeCount(totalLikes)
+      setLiked(true)
+      const emojis = ['💕','🍕'];
+      setFoodEmojis(emojis);
+      setTimeout(() => setFoodEmojis([]), 1000);
+    } catch (error) {
+      console.error("Error liking post:", error)
+    }
+  }
+console.log(post)
+  if (isDeleted) return null
+
+  return (
+    <div className="post-card">
+      <div className='post-user-info'>
+        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="user profile" />
+        <p>{post.user.username}</p>
+      </div>
+      <img src={`http://localhost:3001/uploads/${post.postImage}`}/>
+      <p>{post.postDescription}</p>
+
+      <div className="kebab-menu">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}>
+          <FaEllipsisV />
+        </button>
+
+  {menuOpen && (
+    <div className='kebab-second-div'>
+      <Link
+        to={`/updatePost/${post._id}`}
+        onClick={() => setMenuOpen(false)}
+        className='kebab-option'>
+        <FaEdit /> Edit
+      </Link>
+
+      <button
+        onClick={() => {
+          handleDelete()
+          setMenuOpen(false)
+        }}
+        className='delete-post'>
+        <FaTrash /> Delete
+      </button>
+    </div>
+  )}
+</div>
+    <div style={{ position: 'relative', display: 'inline-block' }}>
+          <button onClick={handleLike} disabled={liked} className="like-button">
+            <span className="like-content">
+              {liked ? <FaHeart color="red" /> : <FaRegHeart />}
+              <span className="like-count">{likeCount}</span>
+            </span>
+          </button>
+
+          {foodEmojis.map((emoji, index) => (
+            <span
+              key={index}
+              className="food-anim"
+              style={{
+                position: 'absolute',
+                left: `${30 + index * 20}px`,
+                top: '-50px',
+                fontSize: '24px',
+                pointerEvents: 'none'
+              }}>
+              {emoji}
+            </span>
+          ))}
+        </div>
 
 
-return (
-  <div className="post-card">
-    <img src={`http://localhost:3001/uploads/${post.postImage}`} alt="Post" />
-    <p style={{ color: 'black' }}>{post.postDescription}</p>
-    
-    <Link to={`/updatePost/${post._id}`}>
-      <button>Edit Post</button>
-    </Link>
 
-    <Link to={`/deletePost/${post._id}`}>
-      <button onClick={handleDelete}>Delete Post</button>
-    </Link>
-    <button onClick={handleLike} disabled={liked}>
-      {liked ? 'Liked' : 'Like'} ({likeCount})
-    </button>
-    <Comment postId={post._id}/>
-  </div>
-)
+      <Comment postId={post._id} />
+    </div>
+  )
 }
+
 export default Post
