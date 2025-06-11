@@ -53,24 +53,33 @@ const handleSubmit = async (event) => {
       navigate('/main')
 
   }
-    return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="postImage">Post Image:</label>
-      <input
-        id="postImage"
-        type="file"
-        onChange={handleChange}
-      />
-      <label htmlFor="postDescription">Post Description:</label>
-      <input
-        id="postDescription"
-        type="text"
-        onChange={handleChange}
-        value={postState.postDescription}
-      />
-      <button type="submit">Update Post</button>
-    </form>
-  )
+return (
+  <form onSubmit={handleSubmit} className="new-post-form">
+    <label htmlFor="postImage" className="form-label">Post Image:</label>
+
+    <label htmlFor="postImage" className="custom-file-upload">
+      Choose Image
+    </label>
+    <input
+      id="postImage"
+      type="file"
+      onChange={handleChange}
+      className="file-input"
+    />
+
+    <label htmlFor="postDescription" className="form-label">Post Description:</label>
+    <input
+      id="postDescription"
+      type="text"
+      onChange={handleChange}
+      value={postState.postDescription}
+      className="form-input"
+    />
+
+    <button type="submit" className="form-button">Update Post</button>
+  </form>
+)
+
 }
 
 export default UpdatePost

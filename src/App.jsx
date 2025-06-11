@@ -3,6 +3,9 @@ import { Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import './App.css'
+import './stylesheet/mainHome.css'
+import './stylesheet/restaurant.css'
+
 import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
 import NewPost from './pages/NewPost'
@@ -31,6 +34,8 @@ import Room from './components/Room'
 import CreateRoom from './pages/CreateRoom'
 import RoomsList from './pages/RoomsList'
 
+
+import ShowRandonProfile from './pages/ShowRandomProfile'
 const App = () => {
   const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([])
@@ -124,6 +129,7 @@ const App = () => {
           <Route path="/updatePost/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/randomRestaurant" element={<RandomRestaurant />} />
+          <Route path="/profile/randomProfile" element={<ShowRandonProfile />} />
         </Routes>
       </main>
       <RoomSidebar user={user} />

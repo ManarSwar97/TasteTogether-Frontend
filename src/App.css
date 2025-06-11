@@ -66,7 +66,7 @@ html {
 }
 
 main {
-  background-color: #f5f5f5;
+  background-color: #FFEFD5;
   box-sizing: border-box;
   overflow-y: auto;
 }
@@ -321,39 +321,39 @@ main {
   font-size: 1.5rem;
   margin: 0;
 }
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
 .post-card {
-  border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 16px;
-  margin: 40px auto; /* Top/bottom: 40px, Center horizontally */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  padding: 2rem;
+  margin: 40px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
   background-color: #fff;
   text-align: center;
+  position: relative;
+  border: 1px solid #ccc;
 }
 
 .post-card img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  height: 400px;
+  border-radius: 10px;
+  margin-bottom: 16px;
   object-fit: cover;
 }
 
 .post-card p {
   color: black;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 1rem;
 }
-/* .main-home{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-align: center;
-} */
+
+
 .rest-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -397,89 +397,78 @@ main {
   color: #555;
 }
 .value {
-  color: #1a73e8; /* Google blue */
+  color: #1a73e8; 
   font-weight: 500;
 }
 .random-rest {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 80vh;
+  background-color: #f9fafb;
+  padding: 20px;
 }
 
+/* Main content box */
 .random-container {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  text-align: center;
-  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   max-width: 500px;
+  width: 100%;
+  text-align: center;
 }
 
-h2 {
+/* Restaurant name */
+.random-container h2 {
   font-size: 24px;
-  margin-bottom: 10px;
-}
-
-h4 {
-  color: #bbbbbb;
-  margin-bottom: 20px;
-}
-
-.random-btn,
-.direction-btn {
-  background-color: #2196f3;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 10px 0;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-.random-container a {
-  color: white;
-}
-.comment-section {
-  margin-top: 20px;
-  padding: 15px;
-  border-top: 1px solid #ccc;
-}
-
-.comment-section h4 {
-  margin-bottom: 10px;
-  color: black;
-}
-
-.comment-container {
-  background-color: #f5f5f5;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 8px;
+  font-weight: 700;
   color: #333;
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
 }
 
-.comment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Category text */
+.random-container h4 {
+  font-size: 18px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 24px;
 }
 
-.comment-form label {
-  color: black;
+/* Directions link */
+.direction-btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 14px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.comment-form input {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+/* Generate button */
+.random-btn {
+  background-color: #1a73e8;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
 }
+
+.random-btn:hover {
+  background-color: #0f5bb5;
+}
+
 
 /* Reset */
 * {
@@ -567,7 +556,7 @@ body {
 /* Main content area */
 main {
   flex-grow: 1;
-  background-color: #f5f5f5;
+  background-color: #FFEFD5;
   padding: 20px;
   overflow-y: auto; /* enable vertical scroll if needed */
   height: 100vh; /* ensure fills full height */
@@ -1220,6 +1209,9 @@ main {
   cursor: pointer;
 }
 
+.food-anim {
+  animation: floatUp 1s ease forwards;  
+}
 .users-list-container {
   max-width: 1000px;
   margin: 2rem auto;
@@ -1374,13 +1366,7 @@ main {
   color: #333;
 }
 
-.comments-section {
-  margin-top: 1.2rem;
-  max-height: 220px;
-  overflow-y: auto;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
-}
+
 
 .card-buttons {
   margin-top: 1rem;
@@ -1777,6 +1763,73 @@ main {
   border-radius: 6px;
   font-size: 1.1rem;
   font-weight: 600;
+=======
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.5);
+  }
+}
+.random-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-container {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 360px;
+}
+
+.profile-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.profile-card {
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4caf50;
+  margin-bottom: 1rem;
+}
+
+.profile-card h3 {
+  font-size: 1.3rem;
+  color: #222;
+  margin: 0.3rem 0;
+}
+
+.profile-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.random-btn {
+  padding: 0.7rem 1.2rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -1829,4 +1882,11 @@ main {
 
 .room-bar-header {
   text-align: center; 
+.random-btn:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
 }
