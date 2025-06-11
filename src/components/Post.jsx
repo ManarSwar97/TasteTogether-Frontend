@@ -13,6 +13,8 @@ const Post = ({ post }) => {
   const [likeCount, setLikeCount] = useState(post.likes.length)
   const [menuOpen, setMenuOpen] = useState(false)
   const [foodEmojis, setFoodEmojis] = useState([]);
+console.log("Current User ID:", currentUserId)
+console.log("Post User ID:", post?.user?._id)
 
 
   const handleDelete = async () => {
@@ -60,33 +62,36 @@ console.log(post)
       </div>
       <img src={`http://localhost:3001/uploads/${post.postImage}`}/>
       <p>{post.postDescription}</p>
+    {post.user && String(post.user._id) === String(currentUserId) && (
+        <div className="kebab-menu">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            <FaEllipsisV />
+          </button>
 
-      <div className="kebab-menu">
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}>
-          <FaEllipsisV />
-        </button>
+          {menuOpen && (
+            <div className="kebab-second-div">
+              <Link
+                to={`/updatePost/${post._id}`}
+                onClick={() => setMenuOpen(false)}
+                className="kebab-option"
+              >
+                <FaEdit /> Edit
+              </Link>
 
-  {menuOpen && (
-    <div className='kebab-second-div'>
-      <Link
-        to={`/updatePost/${post._id}`}
-        onClick={() => setMenuOpen(false)}
-        className='kebab-option'>
-        <FaEdit /> Edit
-      </Link>
+              <button
+                onClick={() => {
+                  handleDelete()
+                  setMenuOpen(false)
+                }}
+                className="delete-post"
+              >
+                <FaTrash /> Delete
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
-      <button
-        onClick={() => {
-          handleDelete()
-          setMenuOpen(false)
-        }}
-        className='delete-post'>
-        <FaTrash /> Delete
-      </button>
-    </div>
-  )}
-</div>
     <div style={{ position: 'relative', display: 'inline-block' }}>
           <button onClick={handleLike} disabled={liked} className="like-button">
             <span className="like-content">
