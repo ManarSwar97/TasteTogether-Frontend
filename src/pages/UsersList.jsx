@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import RandomProfile from './RandomProfile'
 const UsersList = () => {
   //to set the user state
   const [users, setUsers] = useState([])
@@ -21,6 +21,11 @@ const UsersList = () => {
 
   return (
     <div className="users-list-container">
+      <div className='random-profile-button'>
+        <Link to="/profile/randomProfile">
+        <button>Show Random Profiles</button>
+        </Link>
+      </div>
       <h2>All Users</h2>
       <div className="users-cards-grid">
         {users.map((user) => (

@@ -2018,3 +2018,71 @@ main {
   color: #333;
   font-weight: 500;
 }
+.random-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-container {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 360px;
+}
+
+.profile-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.profile-card {
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4caf50;
+  margin-bottom: 1rem;
+}
+
+.profile-card h3 {
+  font-size: 1.3rem;
+  color: #222;
+  margin: 0.3rem 0;
+}
+
+.profile-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.random-btn {
+  padding: 0.7rem 1.2rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.random-btn:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+}
