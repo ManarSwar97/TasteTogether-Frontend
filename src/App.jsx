@@ -9,7 +9,6 @@ import NewPost from './pages/NewPost'
 
 import RecipeListAPI from './components/RecipeListAPI'
 
-
 import UpdatePost from './pages/UpdatePost'
 
 import Sidebar from './components/SideBar'
@@ -23,6 +22,10 @@ import UserRecipe from './components/UserRecipe'
 import NewRecipe from './components/NewRecipe'
 import UpdateRecipe from './pages/UpdateRecipe'
 import RandomUserRecipe from './pages/RandomUserRecipe'
+import UsersList from './pages/UsersList'
+import Profile from './pages/Profile'
+import EditProfile from './pages/EditProfile'
+
 const App = () => {
   const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([])
@@ -74,6 +77,9 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/users" element={<UsersList />} />
+          <Route path="/profile/:user_id" element={<Profile />} />
+          <Route path="/edit-profile/:user_id" element={<EditProfile />} />
           <Route
             path="/main"
             element={<MainHome user={user} posts={posts} />}
@@ -101,6 +107,10 @@ const App = () => {
             element={<UpdateRecipe addRecipe={addRecipe} />}
           />
           <Route path="/recipes/random" element={<RandomUserRecipe />} />
+          <Route
+            path="/update/:post_id"
+            element={<UpdatePost addPost={addPost} />}
+          />
           <Route path="/updatePost/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/randomRestaurant" element={<RandomRestaurant />} />
