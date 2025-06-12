@@ -1,0 +1,73 @@
+.rp-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+  color: #222;
+  border-radius: 12px;
+}
+
+.rp-profile-wrapper {
+  text-align: center;
+}
+
+.rp-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.rp-profile-card {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.rp-profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.75rem;
+  border: 3px solid #edcaff;
+}
+
+.rp-username {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #9976aa;
+}
+
+.rp-fullname {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.rp-no-selection {
+  font-style: italic;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.rp-error {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.rp-btn-random {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #9976aa;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rp-btn-random:hover {
+  background-color: #edcaff;
+}

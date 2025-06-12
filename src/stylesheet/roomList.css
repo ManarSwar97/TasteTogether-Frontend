@@ -1,0 +1,100 @@
+.rl-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+  color: #4a3b00;
+}
+
+.rl-create-link {
+  display: inline-block;
+  background-color: #f5b800;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.rl-create-link:hover {
+  background-color: #d99a00;
+}
+
+.rl-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #4a3b00;
+}
+
+.rl-empty-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777000;
+}
+
+.rl-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.rl-item {
+  background-color: #fff8dc;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.rl-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rl-item--inactive {
+  opacity: 0.6;
+}
+
+.rl-item-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: #d4a900;
+}
+
+.rl-item-description {
+  font-size: 1rem;
+  color: #7a6400;
+  margin-bottom: 0.5rem;
+}
+
+.rl-toggle-label {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #4a3b00;
+}
+
+.rl-join-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ffcc00;
+  color: #4a3b00;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rl-join-btn:hover {
+  background-color: #e6b800;
+}
+
+.rl-join-btn--inactive {
+  background-color: #ccc068;
+  cursor: not-allowed;
+}

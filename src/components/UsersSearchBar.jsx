@@ -47,6 +47,7 @@ const UsersSearchBar = () => {
         placeholder="Search for user..."
         value={searchTerm}
         onChange={handleSearch}
+        className="search-users-input"
       />
 
       <ul className="user-list">

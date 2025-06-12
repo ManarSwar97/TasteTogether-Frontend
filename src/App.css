@@ -1,76 +1,36 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-#root {
-  display: flex;
-  min-height: 100vh;
-  width: 100vw;
+/* Reset and base styles */
+* {
   box-sizing: border-box;
 }
+/* Full-page base reset and background */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffefd5;
+  font-family: Arial, sans-serif;
+  height: auto;
+  min-height: 100%;
+}
 
-.sidebar {
-  width: 15%;
-  background-color: #2c3e50;
-  color: #ecf0f1;
+/* Root container – let it grow with content */
+#root {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  min-height: 100%;
+  background-color: #ffefd5;
+}
+
+/* Main content should just grow with content */
+main {
+  flex: 1;
+  width: 100%;
+  background-color: #ffefd5;
   padding: 20px;
   box-sizing: border-box;
 }
 
-.sidebar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
 
-.sidebar-links a {
-  color: #ecf0f1;
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  display: flex;
-}
-
-.sidebar-links a:hover {
-  background-color: #34495e;
-}
-
-.sidebar-bottom {
-  margin-top: auto;
-}
-
-.sidebar-bottom button {
-  width: 100%;
-  background-color: #7594c6;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.sidebar-bottom button:hover {
-  background-color: #c0392b;
-}
-
-main {
-  background-color: #FFEFD5;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
-
+/* Home Welcome Section */
 .col.home {
   display: flex;
   justify-content: center;
@@ -78,78 +38,124 @@ main {
   height: 100vh;
 }
 
-.welcome-signin {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
+/* Shared Form Container Styles */
+.register-container,
+.signin-container {
+  max-width: 350px;
+  margin: 40px auto;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.room-bar {
-  width: 15%;
-  background-color: #34495e;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
+/* Headings */
+.register-heading,
+.signin-heading {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 1.5rem;
 }
 
-.room-bar {
-  width: 15%;
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
+/* Subtext and Links */
+.register-login-link,
+.signin-subtext {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #2c3e50;
 }
 
-.room-bar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.room-bar-links a {
-  color: #ecf0f1;
+.register-login-link a {
+  color: #3498db;
   text-decoration: none;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+}
+
+.register-login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Forms */
+.register-form,
+.signin-form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.room-bar-links a:hover {
-  background-color: #34495e;
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
-.room-bar-bottom {
-  margin-top: auto;
+.input-wrapper label {
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 0.9rem;
 }
 
-.room-bar-bottom button {
-  width: 100%;
-  background-color: #7594c6;
-  border: none;
+.input-wrapper input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+}
+
+.input-wrapper input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Buttons */
+.register-button,
+.signin-button {
+  padding: 8px;
+  background-color: #3498db;
   color: white;
-  padding: 10px;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
   transition: background-color 0.3s;
 }
 
-.room-bar-bottom button:hover {
-  background-color: #c0392b;
+.register-button:hover,
+.signin-button:hover {
+  background-color: #2980b9;
 }
 
+.register-button:disabled,
+.signin-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.signed-in-message {
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signed-in-message h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Post Card */
 
 .post-card {
   border-radius: 10px;
@@ -178,7 +184,7 @@ main {
   margin-top: 1rem;
 }
 
-
+/* Grid of Restaurants */
 .rest-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -221,10 +227,13 @@ main {
   font-weight: 500;
   color: #555;
 }
+
 .value {
-  color: #1a73e8; 
+  color: #1a73e8;
   font-weight: 500;
 }
+
+/* Random Restaurant Picker */
 .random-rest {
   display: flex;
   justify-content: center;
@@ -234,18 +243,16 @@ main {
   padding: 20px;
 }
 
-/* Main content box */
 .random-container {
   background-color: #ffffff;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   max-width: 500px;
   width: 100%;
   text-align: center;
 }
 
-/* Restaurant name */
 .random-container h2 {
   font-size: 24px;
   font-weight: 700;
@@ -254,7 +261,6 @@ main {
   font-family: 'Georgia', serif;
 }
 
-/* Category text */
 .random-container h4 {
   font-size: 18px;
   color: #666;
@@ -262,7 +268,6 @@ main {
   margin-bottom: 24px;
 }
 
-/* Directions link */
 .direction-btn {
   display: inline-block;
   margin-bottom: 24px;
@@ -274,10 +279,8 @@ main {
   border-radius: 14px;
   font-size: 15px;
   width: 100%;
-  box-sizing: border-box;
 }
 
-/* Generate button */
 .random-btn {
   background-color: #1a73e8;
   color: white;
@@ -294,253 +297,7 @@ main {
   background-color: #0f5bb5;
 }
 
-
-/* Reset */
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
-/* Root container - full viewport height, flex row */
-#root {
-  display: flex;
-  flex-direction: row;
-  height: 100vh; /* full viewport height */
-  width: 100vw;
-  overflow: hidden; /* prevent body scroll */
-}
-
-/* Sidebar */
-.sidebar {
-  width: 220px; /* fixed width sidebar */
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto; /* scroll if sidebar content is tall */
-  flex-shrink: 0; /* prevent shrinking */
-}
-
-/* Sidebar links container */
-.sidebar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-/* Sidebar links style */
-.sidebar-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  color: #ecf0f1;
-  text-decoration: none;
-  border-radius: 5px;
-  background-color: #34495e;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  padding: 0 10px;
-}
-
-.sidebar-links a:hover {
-  background-color: #1abc9c;
-}
-
-/* Bottom area in sidebar */
-.sidebar-bottom {
-  margin-top: auto;
-}
-
-.sidebar-bottom button {
-  width: 100%;
-  background-color: #7594c6;
-  border: none;
-  color: white;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar-bottom button:hover {
-  background-color: #c0392b;
-}
-
-/* Main content area */
-main {
-  flex-grow: 1;
-  background-color: #FFEFD5;
-  padding: 20px;
-  overflow-y: auto; /* enable vertical scroll if needed */
-  height: 100vh; /* ensure fills full height */
-  box-sizing: border-box;
-}
-
-/* Recipe list container */
-.recipe-list-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Title */
-.recipe-list-title {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-/* Grid for recipes */
-.recipes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-/* Recipe card */
-.recipe-card {
-  background: white;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Recipe name */
-.recipe-name {
-  font-size: 1.2rem;
-  color: #2980b9;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* Recipe image */
-.recipe-image {
-  width: 100%;
-  max-width: 260px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-/* Recipe instructions */
-.recipe-instructions {
-  font-size: 0.9rem;
-  color: #555;
-  text-align: justify;
-  overflow-y: auto;
-  max-height: 120px;
-}
-
-.recipe-list-container {
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.recipe-list-title {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-  color: #333;
-}
-
-.recipes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.recipe-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.3s ease;
-}
-
-.recipe-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.recipe-name {
-  margin: 0 0 10px;
-  font-size: 1.3rem;
-  color: #222;
-}
-
-.recipe-image {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  object-fit: cover;
-}
-
-.recipe-instructions {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #555;
-  margin-bottom: 12px;
-  flex-grow: 1;
-}
-
-.recipe-card h4 {
-  margin: 10px 0 6px;
-  font-size: 1.1rem;
-  color: #444;
-}
-
-.recipe-card ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 0;
-  color: #444;
-  font-size: 0.95rem;
-}
-
-.loading,
-.error,
-.no-recipes {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #666;
-  margin-top: 50px;
-}
-
-.recipe-video {
-  margin-top: 12px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.recipe-category {
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0;
-  font-weight: 500;
-}
-
+/* Search Bar */
 .search-bar {
   display: flex;
   justify-content: center;
@@ -566,838 +323,7 @@ main {
   cursor: pointer;
 }
 
-.random-button {
-  padding: 8px 16px;
-  background-color: #ff6347;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-.random-recipe-card {
-  background-color: #2c3e50;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 20px 0;
-}
-
-.random-recipe-card img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.random-recipe-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.random-recipe-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.random-button,
-.back-button {
-  background-color: #ff6f61;
-  border: none;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  margin: 0.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.random-button:hover,
-.back-button:hover {
-  background-color: #e65c4f;
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-.random-recipe-card {
-  margin-top: 2rem;
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-.random-recipe-card h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #222;
-}
-
-.random-recipe-card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: #555;
-}
-
-.random-recipe-card img.recipe-image {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.random-recipe-card h4 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  color: #444;
-}
-
-.random-recipe-card ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-}
-
-.random-recipe-card li {
-  margin-bottom: 0.3rem;
-  color: #666;
-}
-
-.recipe-detail-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #fff8f0;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-}
-
-.recipe-detail-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #d35400;
-  text-align: center;
-}
-
-.recipe-detail-container p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.recipe-detail-container img.recipe-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 1rem auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.recipe-detail-container h4 {
-  margin-top: 1.5rem;
-  font-size: 1.3rem;
-  border-bottom: 2px solid #d35400;
-  padding-bottom: 0.3rem;
-  color: #d35400;
-}
-
-.recipe-detail-container ul {
-  list-style: disc inside;
-  margin-top: 0.7rem;
-}
-
-.recipe-detail-container ul li {
-  margin-bottom: 0.4rem;
-  font-size: 1.1rem;
-}
-
-.video-container {
-  margin-top: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.new-recipe-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-}
-
-.new-recipe-form h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: black;
-}
-
-.input-recipe-name,
-.textarea-recipe-description,
-.textarea-recipe-instruction,
-.textarea-recipe-ingredient,
-.select-recipe-category,
-.recipe-image-upload {
-  margin-bottom: 1rem;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.select-recipe-category {
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.recipe-image-upload {
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.btn-submit-recipe {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-submit-recipe:hover {
-  background-color: #45a049;
-}
-
-.user-recipes-container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-}
-
-.page-title {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.btn {
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  color: white;
-  margin: 0.3rem 0.3rem 1rem 0;
-  display: inline-block;
-}
-
-.btn-add-recipe {
-  background-color: #4caf50;
-}
-
-.btn-add-recipe:hover {
-  background-color: #388e3c;
-}
-
-.btn-edit {
-  background-color: #1976d2;
-}
-
-.btn-edit:hover {
-  background-color: #115293;
-}
-
-.btn-delete {
-  background-color: #d32f2f;
-  margin-left: 0.6rem;
-}
-
-.btn-delete:hover {
-  background-color: #9a0007;
-}
-
-.btn-signin {
-  background-color: #d8000c;
-  padding: 0.6rem 1.5rem;
-  font-weight: 700;
-}
-
-.btn-signin:hover {
-  background-color: #a70000;
-}
-
-.protected-message {
-  max-width: 400px;
-  margin: 3rem auto;
-  padding: 2rem 1.5rem;
-  border: 2px solid #ff4d4d;
-  border-radius: 10px;
-  background-color: #ffe6e6;
-  text-align: center;
-}
-
-.protected-title {
-  color: #d8000c;
-  margin-bottom: 1rem;
-}
-
-.recipe-list {
-  margin-top: 1rem;
-}
-
-.no-recipes-msg {
-  text-align: center;
-  font-style: italic;
-  color: #777;
-  font-size: 1.1rem;
-}
-
-.grid {
-  display: grid;
-  gap: 1.6rem;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
-
-.recipe-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.recipe-name {
-  margin: 0 0 0.5rem 0;
-  color: #2e7d32;
-  font-size: 1.3rem;
-}
-
-.recipe-description,
-.recipe-ingredients,
-.recipe-instructions,
-.recipe-category {
-  font-size: 0.9rem;
-  margin: 0.3rem 0;
-  color: #444;
-}
-
-.recipe-ingredients strong,
-.recipe-instructions strong,
-.recipe-category strong {
-  color: #333;
-}
-
-.recipe-image {
-  margin-top: 1rem;
-  max-width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-}
-
-.card-buttons {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.6rem;
-}
-
-.edit-link {
-  text-decoration: none;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .btn {
-    width: 100%;
-    margin-bottom: 0.8rem;
-  }
-
-  .card-buttons {
-    flex-direction: column;
-  }
-
-  .btn-delete {
-    margin-left: 0;
-  }
-}
-
-.btn-random-recipe {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-random-recipe:hover {
-  background-color: #218838;
-}
-.random-user-recipe-container {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-.btn {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 10px 18px;
-  margin: 10px 5px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #45a049;
-}
-
-.btn-random-recipe {
-  background-color: #ff5722;
-}
-
-.btn-random-recipe:hover {
-  background-color: #e64a19;
-}
-
-.margin-top {
-  margin-top: 20px;
-}
-
-.max-width-300 {
-  max-width: 300px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 15px;
-}
-
-.random-recipe-card {
-  background-color: #f8f8f8;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  margin: 20px auto;
-}
-
-.random-recipe-card h2 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.random-recipe-card p {
-  margin: 8px 0;
-  color: #555;
-}
-
-.comment-form button {
-  padding: 8px 12px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.food-anim {
-  animation: floatUp 1s ease forwards;  
-}
-.users-list-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-}
-
-.users-list-container h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #4a90e2;
-}
-
-.users-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.25rem;
-}
-
-.user-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 1rem 1.2rem;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.user-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.user-profile-image {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 0.8rem;
-  border: 2px solid #4a90e2;
-  box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
-}
-
-.user-card h3 {
-  margin: 0.3rem 0 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.user-card p {
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0;
-}
-
-.profile-page {
-  max-width: 900px;
-  margin: 1rem auto;
-  padding: 0 1rem;
-  font-family: Arial, sans-serif;
-  color: #222;
-}
-
-.profile-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.profile-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #555;
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 posts per row */
-  gap: 0.4rem;
-}
-
-.post-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; /* 1:1 aspect ratio */
-  overflow: hidden;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-}
-
-.post-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.post-image:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(10, 10, 10, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-.modal-content {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  max-width: 700px;
-  width: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.modal-post-image {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: contain;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.modal-content p {
-  margin: 0.8rem 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-
-
-.card-buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.8rem;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
-}
-
-.btn-edit {
-  background-color: #3b82f6;
-  color: white;
-}
-
-.btn-edit:hover {
-  background-color: #2563eb;
-}
-
-.btn-delete {
-  background-color: #ef4444;
-  color: white;
-}
-
-.btn-delete:hover {
-  background-color: #b91c1c;
-}
-
-.btn-close {
-  background-color: #6b7280;
-  color: white;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-.btn-close:hover {
-  background-color: #4b5563;
-}
-
-.post-likes {
-  margin-bottom: 0;
-}
-
-.comments-section {
-  margin-top: 0;
-}
-.recipe-user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  justify-content: flex-start;
-}
-
-.user-recipe-profile-image {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.user-random-recipe-image {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.sidebar-user {
-  cursor: pointer;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sidebar-user-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-.sidebar-user-placeholder {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ccc;
-  color: #555;
-  font-weight: bold;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-}
-
-.edit-profile-container {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.edit-profile-container h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  color: #333;
-}
-
-.edit-profile-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.edit-profile-form div {
-  display: flex;
-  flex-direction: column;
-}
-
-.edit-profile-form label {
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: #555;
-}
-
-.edit-profile-form input[type='text'],
-.edit-profile-form input[type='email'],
-.edit-profile-form input[type='file'] {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.edit-profile-form input[type='text']:focus,
-.edit-profile-form input[type='email']:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.edit-profile-form input[type='file'] {
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.edit-profile-form button {
-  padding: 0.7rem 1.2rem;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.edit-profile-form button:hover {
-  background-color: #0056b3;
-}
-
-.btn-edit-profile {
-  display: inline-block;
-  width: 100%;
-  max-width: 300px;
-  padding: 0.7rem 1.2rem;
-  background-color: rgba(128, 128, 128, 0.05);
-  color: #555;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: 2px solid rgba(128, 128, 128, 0.3);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, transform 0.2s,
-    border-color 0.3s;
-  text-align: center;
-  text-decoration: none;
-}
-
-.btn-edit-profile:hover {
-  background-color: rgba(128, 128, 128, 0.2);
-  color: #333;
-  border-color: rgba(128, 128, 128, 0.5);
-  transform: translateY(-2px);
-}
-
-.btn-edit-profile:active {
-  background-color: rgba(128, 128, 128, 0.4);
-  border-color: rgba(128, 128, 128, 0.6);
-  color: #222;
-  transform: translateY(0);
-}
-
+/* User Search */
 .search-users-container {
   background-color: transparent;
   box-shadow: none;
@@ -1422,297 +348,11 @@ main {
   font-size: 14px;
 }
 
-.user-list {
-  list-style: none;
-  padding: 0;
+html, body, #root {
+  height: 100%;
   margin: 0;
-}
-
-.user-item {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.2s;
-}
-
-.user-item:hover {
-  background-color: #f0f0f0;
-}
-
-.user-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  width: 100%;
-}
-
-.user-image {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 12px;
-  border: 2px solid #ccc;
-}
-
-.username {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.rooms-list {
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.rooms-list__create-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #007bff;
-}
-
-.rooms-list__create-link:hover {
-  text-decoration: underline;
-}
-
-.rooms-list__title {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.rooms-list__empty {
-  font-style: italic;
-  color: #777;
-}
-
-.rooms-list__items {
-  list-style: none;
   padding: 0;
-}
-
-.rooms-list__item {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-}
-
-.rooms-list__item-title {
-  font-size: 18px;
-  margin: 0 0 5px 0;
-  color: #333;
-}
-
-.rooms-list__item-description {
-  margin: 0 0 10px 0;
-  color: #666;
-  font-size: 14px;
-}
-
-.rooms-list__join-button {
-  padding: 8px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  background-color: #28a745;
-  color: white;
-  transition: background-color 0.3s ease;
-}
-
-.rooms-list__join-button:hover {
-  background-color: #218838;
-}
-
-.create-room-form {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 24px;
-  background-color: #f7f9fc;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffefd5;
   font-family: Arial, sans-serif;
 }
 
-.create-room-title {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-  color: #333;
-  text-align: center;
-}
-
-.create-room-input,
-.create-room-textarea {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 16px;
-  border: 1.5px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.create-room-input:focus,
-.create-room-textarea:focus {
-  outline: none;
-  border-color: #0077ff;
-  background-color: #fff;
-}
-
-.create-room-textarea {
-  resize: vertical;
-  min-height: 80px;
-  font-family: Arial, sans-serif;
-}
-
-.create-room-error {
-  color: #d9534f;
-  font-weight: 600;
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.create-room-submit {
-  width: 100%;
-  padding: 12px;
-  background-color: #0077ff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-@keyframes floatUp {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-60px) scale(1.5);
-  }
-}
-.random-profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  min-height: 100vh;
-  background-color: #f7f7f7;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.profile-container {
-  background-color: #fff;
-  padding: 2rem 3rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 360px;
-}
-
-.profile-container h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.profile-card {
-  margin-bottom: 1.5rem;
-}
-
-.profile-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #4caf50;
-  margin-bottom: 1rem;
-}
-
-.profile-card h3 {
-  font-size: 1.3rem;
-  color: #222;
-  margin: 0.3rem 0;
-}
-
-.profile-card p {
-  color: #666;
-  font-size: 1rem;
-}
-
-.random-btn {
-  padding: 0.7rem 1.2rem;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.create-room-submit:disabled {
-  background-color: #99c2ff;
-  cursor: not-allowed;
-}
-
-.create-room-submit:not(:disabled):hover {
-  background-color: #005fcc;
-}
-
-.rooms-list__join-button {
-  background-color: #007bff; /* blue */
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.rooms-list__join-button:hover {
-  background-color: #0056b3;
-}
-
-
-.rooms-list__join-button--inactive:hover {
-  background-color: #d3d3d3;
-}
-
-
-
-.rooms-list__item--inactive {
-  background-color: #f0f0f0;
-  
-  opacity: 0.7;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
-}
-
-.rooms-list__join-button--inactive {
-  background-color: gray;
-  color: white;
-  cursor: not-allowed;
-  border: none;
-}
-
-.room-bar-header {
-  text-align: center; }
-  
-.random-btn:hover {
-  background-color: #45a049;
-}
-
-.error {
-  color: red;
-  margin-top: 1rem;
-}

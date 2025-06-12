@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import '../stylesheet/addRecipe.css'
 //category list same as the one in the api
 const categoriesList = [
   'Beef',
@@ -23,7 +23,6 @@ const categoriesList = [
 const NewRecipe = ({ addRecipe }) => {
   let navigate = useNavigate()
 
-  //the initial state for the recipe form
   const initialState = {
     recipeName: '',
     recipeDescription: '',
@@ -32,9 +31,8 @@ const NewRecipe = ({ addRecipe }) => {
     recipeCategory: '',
     recipeImage: ''
   }
-  const [recipeState, setRecipeState] = useState(initialState) //set the form
+  const [recipeState, setRecipeState] = useState(initialState)
 
-  //handle the changes in the form fields
   const handleChange = (event) => {
     const { id, value, files } = event.target
     setRecipeState({
@@ -43,9 +41,7 @@ const NewRecipe = ({ addRecipe }) => {
     })
   }
 
-  //handle the form submission by taking the data added
   const handleSubmit = async (event) => {
-    //to prevent the lagging in the reload and to not delete the data that existed already after reload
     event.preventDefault()
     const formData = new FormData()
     formData.append('recipeName', recipeState.recipeName)
@@ -55,10 +51,8 @@ const NewRecipe = ({ addRecipe }) => {
     formData.append('recipeIngredient', recipeState.recipeIngredient)
     formData.append('recipeCategory', recipeState.recipeCategory)
 
-    //to define the token from the local storage for authentication 
     const token = localStorage.getItem('token')
 
-    //the axios call for the response to add the recipes in the database
     const response = await axios.post(
       'http://localhost:3001/recipe/db',
       formData,
@@ -70,16 +64,15 @@ const NewRecipe = ({ addRecipe }) => {
       }
     )
 
-    //save the new recipe
     const newRecipe = response.data
     addRecipe(newRecipe)
-    setRecipeState(initialState) //set the form to initial state after saving and submit
-    navigate('/user/recipes') //navigate to the user recipe page
+    setRecipeState(initialState)
+    navigate('/user/recipes')
   }
 
   return (
-    <form onSubmit={handleSubmit} className="new-recipe-form">
-      <h2>Add Recipe</h2>
+    <form onSubmit={handleSubmit} className="nr-form">
+      <h2 className="nr-title">Add Recipe</h2>
       <input
         type="text"
         id="recipeName"
@@ -87,6 +80,7 @@ const NewRecipe = ({ addRecipe }) => {
         onChange={handleChange}
         placeholder="Recipe Name"
         required
+        className="nr-input"
       />
       <textarea
         id="recipeDescription"
@@ -94,6 +88,7 @@ const NewRecipe = ({ addRecipe }) => {
         onChange={handleChange}
         placeholder="Description"
         required
+        className="nr-textarea"
       />
       <textarea
         id="recipeInstruction"
@@ -101,6 +96,7 @@ const NewRecipe = ({ addRecipe }) => {
         onChange={handleChange}
         placeholder="Instructions"
         required
+        className="nr-textarea"
       />
       <textarea
         id="recipeIngredient"
@@ -108,25 +104,34 @@ const NewRecipe = ({ addRecipe }) => {
         onChange={handleChange}
         placeholder="Ingredients"
         required
+        className="nr-textarea"
       />
       <select
         id="recipeCategory"
         value={recipeState.recipeCategory}
         onChange={handleChange}
         required
+        className="nr-select"
       >
-        {/* the categories list as select and options */}
         <option value="" disabled>
           Select category
         </option>
         {categoriesList.map((category) => (
-          <option key={category} value={category}>
+          <option key={category} value={category} className="nr-option">
             {category}
           </option>
         ))}
       </select>
-      <input type="file" id="recipeImage" onChange={handleChange} required />
-      <button type="submit">Create Recipe</button>
+      <input
+        type="file"
+        id="recipeImage"
+        onChange={handleChange}
+        required
+        className="nr-file-input"
+      />
+      <button type="submit" className="nr-submit-btn">
+        Create Recipe
+      </button>
     </form>
   )
 }

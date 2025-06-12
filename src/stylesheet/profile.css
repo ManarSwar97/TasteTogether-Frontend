@@ -1,0 +1,171 @@
+.pf-page {
+  max-width: 900px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.pf-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pf-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #555;
+}
+
+.pf-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 posts per row */
+  gap: 0.4rem;
+}
+
+.pf-post-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 aspect ratio */
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: #f8f8f8;
+}
+
+.pf-post-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pf-post-image:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.pf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.pf-modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.pf-modal-post-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.pf-modal-content p {
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.pf-card-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.pf-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.pf-btn-edit {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.pf-btn-edit:hover {
+  background-color: #2563eb;
+}
+
+.pf-btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.pf-btn-delete:hover {
+  background-color: #b91c1c;
+}
+
+.pf-btn-close {
+  background-color: #6b7280;
+  color: white;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.pf-btn-close:hover {
+  background-color: #4b5563;
+}
+
+.pf-post-likes {
+  margin-bottom: 0;
+}
+
+.pf-comments-section {
+  margin-top: 0;
+}
+
+.pf-btn {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.pf-btn-edit-profile {
+  background-color: #0404047d; 
+  min-width: 100%; 
+    margin-bottom: 1.5rem;
+}
+
+.pf-btn-edit-profile:hover {
+  background-color: #595959;
+}

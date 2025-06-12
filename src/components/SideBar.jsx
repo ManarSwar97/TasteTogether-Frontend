@@ -1,6 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
+import '../stylesheet/sidebar.css'
 
 const Sidebar = ({ handleLogOut, user }) => {
+  if (!user) return null
+
   const navigate = useNavigate()
 
   const goToProfile = () => {
@@ -35,11 +38,41 @@ const Sidebar = ({ handleLogOut, user }) => {
         </div>
       )}
       <div className="sidebar-links">
-        <Link to="/main">Home</Link>
-        <Link to="/restaurants">Restaurants</Link>
-        <Link to="/recipes">Recipes</Link>
-        <Link to="/user/recipes">Users Recipes</Link>
-        <Link to="/users">All Users</Link>
+        <Link to="/main">
+          <img
+            className="icon"
+            src="https://cdn-icons-png.flaticon.com/128/2550/2550430.png"
+            alt="Home"
+          />
+        </Link>
+        <Link to="/restaurants">
+          <img
+            className="icon"
+            src="https://cdn-icons-png.flaticon.com/128/1689/1689246.png"
+            alt="restaurants"
+          />
+        </Link>
+        <Link to="/recipes">
+          <img
+            className="icon"
+            src="https://cdn-icons-png.flaticon.com/128/1721/1721455.png"
+            alt="Recipes"
+          />
+        </Link>
+        <Link to="/user/recipes">
+          <img
+            className="icon"
+            src="https://i.imgur.com/OYSgL7F.png"
+            alt="Users-Recipes"
+          />
+        </Link>
+        <Link to="/users">
+          <img
+            className="icon"
+            src="https://i.imgur.com/VNDml7E.png"
+            alt="All-Users"
+          />
+        </Link>
       </div>
 
       <div className="sidebar-bottom">

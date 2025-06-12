@@ -1,0 +1,57 @@
+.nr-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  background-color: #f8fdf4;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+.nr-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #27ae60;
+}
+
+/* Input & Textarea Styling */
+.nr-input,
+.nr-textarea,
+.nr-select,
+.nr-file-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.nr-input:focus,
+.nr-textarea:focus,
+.nr-select:focus {
+  border-color: #27ae60;
+  outline: none;
+}
+
+/* Button Styling */
+.nr-submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nr-submit-btn:hover {
+  background-color: #1e8449;
+}
