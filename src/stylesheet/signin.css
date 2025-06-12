@@ -2,17 +2,17 @@
   max-width: 400px;
   margin: 80px auto;
   padding: 30px;
-  background-color: #fff; /* Matches new post form */
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #806D58;
+  color: #2c3e50;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .signin-heading {
   text-align: center;
   margin-bottom: 10px;
-  color: #806D58;
+  color: #2c3e50;
   font-size: 1.6rem;
   font-weight: 600;
 }
@@ -21,7 +21,7 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 1rem;
-  color: #5f574d;
+  color: #2c3e50;
 }
 
 .signin-form {
@@ -38,28 +38,28 @@
 .input-wrapper label {
   margin-bottom: 6px;
   font-weight: 600;
-  color: #806D58;
+  color: #2c3e50;
   font-size: 1rem;
 }
 
 .input-wrapper input {
   padding: 10px 14px;
-  border: 1.5px solid #806D58;
+  border: 1.5px solid #2c3e50;
   border-radius: 6px;
   font-size: 1rem;
-  color: #806D58;
+  color: #2c3e50;
   background-color: #fff;
   transition: border-color 0.3s;
 }
 
 .input-wrapper input:focus {
-  border-color: #5f574d;
+  border-color: #1abc9c;
   outline: none;
 }
 
 .signin-button {
   padding: 12px;
-  background-color: #806D58;
+  background-color: #2c3e50;
   color: white;
   border: none;
   border-radius: 8px;
@@ -70,11 +70,11 @@
 }
 
 .signin-button:hover {
-  background-color: #5f574d;
+  background-color: #1a252f;
 }
 
 .signin-button:disabled {
-  background-color: #ccc;
+  background-color: #bdc3c7;
   color: #fff;
   cursor: not-allowed;
 }
@@ -85,7 +85,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: #806D58;
+  color: #2c3e50;
 }
 
 .signed-in-message h2 {
