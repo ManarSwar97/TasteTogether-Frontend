@@ -34,22 +34,26 @@ const MainHome = ({user}) => {
     )
   }  
 
-  return (
-    <div className="main-home">
-          {/* Users Search Bar */}
-      <div className="users-search-bar">
-        <UsersSearchBar />
-      </div>
-      <div className="add-post">
-        <Link to="/new">
-        <button>Add a New Post</button>
-        </Link>
-        {newPosts.map((post) => (
-          <Post key={post._id} post={post} />
-        ))}
-      </div>
-    </div>
-  )
+    return (
+        <div className="main-home">
+          <div className="top-bar">
+            <div className="users-search-bar">
+              <UsersSearchBar />
+            </div>
+            <div className="add-post-button">
+              <Link to="/new">
+                <button>Add a New Post</button>
+              </Link>
+            </div>
+          </div>
+
+          {newPosts.map((post) => (
+            <Post key={post._id} post={post} />
+          ))}
+        </div>
+      )
+
+          
 }
 
 export default MainHome
