@@ -1,0 +1,74 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.page-home {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+  background: none;
+  flex-direction: column;
+  text-align: center;
+  color: #222;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.welcome-signin {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.start-testing {
+  background-color: #3498db;
+  color: white;
+}
+
+.start-testing:hover {
+  background-color: #2980b9;
+}
+
+.sign-in {
+  background-color: #4caf50;
+  color: white;
+}
+
+.sign-in:hover {
+  background-color: #3b8d40;
+}

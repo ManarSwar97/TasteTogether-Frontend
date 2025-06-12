@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-
+import '../stylesheet/editProfile.css'
 const EditProfile = () => {
-  //get the user id from URL param
+  // get the user id from URL param
   const { user_id } = useParams()
   const navigate = useNavigate()
-  //token for authentication
+  // token for authentication
   const token = localStorage.getItem('token')
 
-  //store the form data in state
+  // store the form data in state
   const [formValues, setFormValues] = useState({
     username: '',
     firstName: '',
@@ -22,13 +22,11 @@ const EditProfile = () => {
   useEffect(() => {
     const User = async () => {
       try {
-        //axios call to get the user data using user id
-        const response = await axios.get(
-          `http://localhost:3001/users/${user_id}`
-        )
-        //save the response in "user"
+        // axios call to get the user data using user id
+        const response = await axios.get(`http://localhost:3001/users/${user_id}`)
+        // save the response in "user"
         const user = response.data.user
-        //fill the form with the existing user data
+        // fill the form with the existing user data
         setFormValues({
           username: user.username,
           firstName: user.firstName,
@@ -41,11 +39,11 @@ const EditProfile = () => {
         throw error
       }
     }
-    //call the function to get the user data
+    // call the function to get the user data
     User()
   }, [user_id])
 
-  //to update the changes in form values
+  // to update the changes in form values
   const handleChange = (e) => {
     const { id, type, files, value } = e.target
     if (type === 'file') {
@@ -55,7 +53,7 @@ const EditProfile = () => {
     }
   }
 
-  //handle the submission
+  // handle the submission
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData()
@@ -64,19 +62,19 @@ const EditProfile = () => {
     formData.append('lastName', formValues.lastName)
     formData.append('email', formValues.email)
     formData.append('typeOfFood', formValues.typeOfFood)
-    //if an image uploaded, add it
+    // if an image uploaded, add it
     if (formValues.image) {
       formData.append('profileImage', formValues.image)
     }
 
     try {
-      //axios call to update the user profile
+      // axios call to update the user profile
       await axios.put(`http://localhost:3001/users/${user_id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      //after updating, go to the user profile page
+      // after updating, go to the user profile page
       navigate(`/profile/${user_id}`)
     } catch (error) {
       throw error
@@ -84,11 +82,11 @@ const EditProfile = () => {
   }
 
   return (
-    <div className="edit-profile-container">
-      <h2>Edit Profile</h2>
-      <form className="edit-profile-form" onSubmit={handleSubmit}>
+    <div className="ep-container">
+      <h2 className="ep-heading">Edit Profile</h2>
+      <form className="ep-form" onSubmit={handleSubmit}>
         {/* First Name */}
-        <div>
+        <div className="ep-field">
           <label htmlFor="firstName">First Name:</label>
           <input
             id="firstName"
@@ -98,7 +96,7 @@ const EditProfile = () => {
           />
         </div>
         {/* Last Name */}
-        <div>
+        <div className="ep-field">
           <label htmlFor="lastName">Last Name:</label>
           <input
             id="lastName"
@@ -108,7 +106,7 @@ const EditProfile = () => {
           />
         </div>
         {/* Email */}
-        <div>
+        <div className="ep-field">
           <label htmlFor="email">Email:</label>
           <input
             id="email"
@@ -118,7 +116,7 @@ const EditProfile = () => {
           />
         </div>
         {/* Type of Food */}
-        <div>
+        <div className="ep-field">
           <label htmlFor="typeOfFood">Type of Food:</label>
           <input
             id="typeOfFood"
@@ -128,7 +126,7 @@ const EditProfile = () => {
           />
         </div>
         {/* Profile Image */}
-        <div>
+        <div className="ep-field">
           <label htmlFor="image">Profile Image:</label>
           <input
             id="image"
@@ -138,7 +136,9 @@ const EditProfile = () => {
           />
         </div>
 
-        <button type="submit">Update Profile</button>
+        <button className="ep-submit-btn" type="submit">
+          Update Profile
+        </button>
       </form>
     </div>
   )

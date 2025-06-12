@@ -2,17 +2,16 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import UsersSearchBar from '../components/UsersSearchBar'
-import RandomProfile from './RandomProfile'
+import '../stylesheet/usersList.css'
+
 const UsersList = () => {
-  //to set the user state
   const [users, setUsers] = useState([])
 
   useEffect(() => {
     const Users = async () => {
       try {
-        //axios call to get all the users from the database
         const response = await axios.get('http://localhost:3001/users')
-        setUsers(response.data) //seth the users
+        setUsers(response.data)
       } catch (error) {
         console.error('Error loading users', error)
       }
@@ -21,22 +20,33 @@ const UsersList = () => {
   }, [])
 
   return (
-    <div className="users-list-container">
-      {/* Users Search Bar */}
-      <div className="users-search-bar">
-        <UsersSearchBar />
-      <div className='random-profile-button'>
-        <Link to="/profile/randomProfile">
-        <button>Show Random Profiles</button>
-        </Link>
+    <div className="ul-container">
+      {/* Wrapper for search bar + button and title */}
+      <div className="ul-search-bar-wrapper">
+        <div className="ul-search-bar">
+          <UsersSearchBar />
+          <div className="ul-random-btn">
+            <Link to="/profile/randomProfile">
+              <button className="ul-btn-random">
+                <img
+                  className="ul-icon"
+                  src="https://cdn-icons-png.flaticon.com/128/7527/7527325.png"
+                  alt="show-random-profile"
+                />
+              </button>
+            </Link>
+          </div>
+        </div>
+        <h2 className="ul-title">Users Page</h2>
       </div>
-      <h2>All Users</h2>
-      <div className="users-cards-grid">
+
+      {/* Users Grid */}
+      <div className="ul-cards-grid">
         {users.map((user) => (
           <Link
             key={user._id}
             to={`/profile/${user._id}`}
-            className="user-card"
+            className="ul-user-card"
           >
             <img
               src={
@@ -45,18 +55,16 @@ const UsersList = () => {
                   : '/default-profile.png'
               }
               alt={`${user.username} profile`}
-              className="user-profile-image"
+              className="ul-user-image"
             />
-            <h3>{user.username}</h3>
-            <p>
+            <h3 className="ul-username">{user.username}</h3>
+            <p className="ul-fullname">
               {user.firstName} {user.lastName}
             </p>
           </Link>
         ))}
       </div>
     </div>
-        </div>
-
   )
 }
 

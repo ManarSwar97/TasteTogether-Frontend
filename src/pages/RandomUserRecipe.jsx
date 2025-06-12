@@ -1,54 +1,42 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import '../stylesheet/randomUserRecipe.css'
 
 const RandomUserRecipe = () => {
-  //to store all user recipes
   const [recipes, setRecipes] = useState([])
-  //to store the random recipe
   const [randomRecipe, setRandomRecipe] = useState(null)
-  //to set the error
   const [error, setError] = useState('')
   const navigate = useNavigate()
-  //define the token for authentication
   const token = localStorage.getItem('token')
 
   useEffect(() => {
-    //fetch recipes 
     const Recipes = async () => {
       try {
-        //axios call to get the recipes from the database
         const response = await axios.get('http://localhost:3001/recipe/db', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         })
-        //check if the response data exist 
         if (response.data || []) {
-          setRecipes(response.data) //store recipes
-          //if theres recipes then pick a random one
+          setRecipes(response.data)
           if (response.data.length > 0) {
             RandomRecipe(response.data)
           }
         } else {
-          //if no recipes found set recipes to empty array and the random to null
           setRecipes([])
           setRandomRecipe(null)
         }
       } catch (error) {
-        //if it catch an error then again ^
         setRecipes([])
         setRandomRecipe(null)
         setError('Failed to fetch recipes.')
       }
     }
-    Recipes() //call the recipe function 
+    Recipes()
   }, [token])
 
-
-//function to pick a random recipe from the database recipes
   const RandomRecipe = (recipesList = recipes) => {
-    //if there was no recipes then set it to null
     if (recipesList.length === 0) {
       setRandomRecipe(null)
       return
@@ -57,45 +45,47 @@ const RandomUserRecipe = () => {
     setRandomRecipe(recipesList[randomIndex])
   }
 
-  //if the user not logged in
   if (!token) {
     return (
-      <div>
+      <div className="rur-not-signed-in">
         <h3>You must be signed in to view your recipes!</h3>
-        <button onClick={() => navigate('/signin')}>Sign In</button>
+        <button onClick={() => navigate('/signin')} className="rur-btn-signin">
+          Sign In
+        </button>
       </div>
     )
   }
 
   return (
-    <div className="random-user-recipe-container">
-      <h1>Random User Recipe</h1>
-      <button
-        onClick={() => RandomRecipe()}
-        className="btn btn-random-recipe"
-      >
+    <div className="rur-container">
+      <button onClick={() => RandomRecipe()} className="rur-btn-random-recipe">
+        <img
+          className="rur-icon"
+          src="https://i.imgur.com/x68Mtvx.png"
+          alt="Get Random User Recipe"
+        />
         Show Another Random Recipe
       </button>
 
       {randomRecipe ? (
-        <div className="random-recipe-card margin-top">
-          {/* User info */}
+        <div className="rur-recipe-card rur-margin-top">
           {randomRecipe.user && (
-            <div className="user-info margin-bottom">
-              <h3>Recipe by: {randomRecipe.user.username}</h3>
+            <div className="rur-user-info-wrapper">
               {randomRecipe.user.image && (
                 <img
-                  className="user-random-recipe-image"
+                  className="rur-user-image"
                   src={`http://localhost:3001/uploads/${randomRecipe.user.image}`}
                   alt={randomRecipe.user.username}
                 />
               )}
+              <div className="rur-recipe-content">
+                <h3>{randomRecipe.user.username}</h3>
+              </div>
             </div>
           )}
 
-          {/* Recipe details */}
-          <h2>{randomRecipe.recipeName}</h2>
-          <p>{randomRecipe.recipeDescription}</p>
+          <h2 className="rur-recipe-name">{randomRecipe.recipeName}</h2>
+          <p className="rur-recipe-description">{randomRecipe.recipeDescription}</p>
           <p>
             <strong>Ingredients:</strong> {randomRecipe.recipeIngredient}
           </p>
@@ -107,7 +97,7 @@ const RandomUserRecipe = () => {
           </p>
           {randomRecipe.recipeImage && (
             <img
-              className="recipe-image max-width-300"
+              className="rur-recipe-image rur-max-width-300"
               src={`http://localhost:3001/uploads/${randomRecipe.recipeImage}`}
               alt={randomRecipe.recipeName}
             />
@@ -119,7 +109,7 @@ const RandomUserRecipe = () => {
 
       <button
         onClick={() => navigate('/user/recipes')}
-        className="btn margin-top"
+        className="rur-btn rur-margin-top"
       >
         Back to All Recipes
       </button>
