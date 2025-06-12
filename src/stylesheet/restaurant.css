@@ -1,40 +1,16 @@
-/* Import refined serif & sans-serif fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap');
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 body {
-  background-color: #FFEFD5;
-  color: #806D58;
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2C3E50;
 }
-
-#root {
-  min-height: 100vh;
-  width: 100vw;
-  box-sizing: border-box;
-
-}
-
-/* Buttons - elegant style */
-.random-button,
-.random-btn,
+/* Button Styles */
 .direction-button {
   width: 100%;
   max-width: 450px;
   padding: 16px;
   border: none;
   border-radius: 14px;
-  background-color: #806D58;
-  color: #FFEFD5;
+  background-color: #d1427241; /* Soft pink */
+  color: #C2185B;
   font-size: 18px;
   font-weight: 600;
   margin-top: 12px;
@@ -42,22 +18,33 @@ body {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
-.random-button:hover,
-.random-btn:hover,
-.direction-button:hover {
-  background-color: #6b5848;
+.random-button,
+.random-btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background-color: #f0629141; /* Soft pink */
+  color: #C2185B;              /* Dark pink text */
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  text-align: center;
 }
-
-/* Heading styles */
+.random-button:hover,
+.random-btn:hover {
+  background-color: #EC407A;
+}
+/* Headings */
 .random-title {
   font-size: 40px;
   text-align: center;
-  color: #5a4b3d;
-  font-family: 'Playfair Display', serif;
+  color: #2C3E50;
 }
-
-/* Top section layout */
+/* Top Section Layout */
 .top-section {
   display: flex;
   flex-direction: row;
@@ -65,128 +52,125 @@ body {
   justify-content: center;
   margin-bottom: 20px;
 }
-
-/* Search input field */
+/* Search Input Field */
 .search-rest {
   width: 100%;
   max-width: 500px;
   margin-bottom: 16px;
 }
-
 .search-retaurant {
   width: 100%;
   padding: 14px 18px;
-  border: 1px solid #c9b6a3;
+  border: 1px solid #C9B6A3;
   border-radius: 14px;
   font-size: 17px;
-  background-color: #fff8f0;
+  background-color: #FFF8F0;
   outline: none;
-  color: #5e4a3a;
+  color: #2C3E50;
 }
-
-/* Grid layout for restaurant cards */
+/* Restaurant Grid */
 .rest-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: calc(100vw - 350px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
-
-/* Restaurant card styling */
+@NK Media
+ (min-width: 640px) {
+  .rest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@NK Media
+ (min-width: 1024px) {
+  .rest-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Restaurant Card */
 .rest-card {
   background-color: white;
-  padding: 24px;
-  border-radius: 18px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
   transition: transform 0.3s ease;
 }
-
 .rest-card:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
-
 .rest-name {
-  font-size: 22px;
-  font-weight: 700;
-  color: #5a4b3d;
-  margin-bottom: 10px;
-  font-family: 'Playfair Display', serif;
-  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1052A8;
+  margin-bottom: 0.5rem;
 }
-
-/* Category / Subtype */
+/* Category and Value */
 .label {
   font-weight: 500;
-  color: #6e5f50;
+  color: #1052A8;
 }
 .value {
-  font-size: 16px;
-  color: #A67C52;
+  color: #1052A8;
+  font-weight: 500;
   font-style: italic;
   margin-bottom: 16px;
-  font-weight: 500;
 }
-
-/* Random restaurant main section */
+/* Random Restaurant Section */
 .random-rest {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #fcf7f1;
   padding: 20px;
 }
-
-/* Main content box */
+/* Random Restaurant Card */
 .random-container {
-  background-color: #ffffff;
+  background-color: #FFF0F5;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   width: 100%;
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2C3E50;
 }
-
-/* Restaurant name */
 .random-container h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #5a4b3d;
+  font-size: 28px;
+  font-weight: bold;
+  color: #C2185B;
   margin-bottom: 12px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Georgia', serif;
 }
-
-/* Category text */
 .random-container h4 {
   font-size: 18px;
-  color: #927c6b;
+  color: #D81B60;
   font-style: italic;
   margin-bottom: 24px;
 }
-
-/* Direction link button */
+/* Direction Link Button */
 .direction-btn {
   display: inline-block;
   margin-bottom: 24px;
   padding: 12px 20px;
-  background-color: #e9d8c2;
-  color: #806D58;
+  background-color: #f0629141;
+  color: #C2185B;
   text-decoration: none;
-  font-weight: 600;
-  border-radius: 14px;
-  font-size: 15px;
+  font-weight: bold;
+  border-radius: 30px;
+  font-size: 16px;
   width: 100%;
   box-sizing: border-box;
-  transition: background 0.2s ease;
+  transition: background-color 0.3s;
 }
-
 .direction-btn:hover {
-  background-color: #d2bda7;
+  background-color: #EC407A;
 }
-a{
-    color: white;
+/* Link Styling */
+a {
+  color: white;
+  text-decoration: none;
 }
