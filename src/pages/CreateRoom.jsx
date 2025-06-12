@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import '../stylesheet/CreateRoom.css'
 const CreateRoom = () => {
   const navigate = useNavigate()
 
@@ -56,8 +56,8 @@ const CreateRoom = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="create-room-form">
-      <h2 className="create-room-title">Create a Video Call Room</h2>
+    <form onSubmit={handleSubmit} className="cr-form">
+      <h2 className="cr-title">Create a Video Call Room</h2>
 
       <input
         type="text"
@@ -66,7 +66,7 @@ const CreateRoom = () => {
         onChange={handleChange}
         placeholder="Room Name"
         required
-        className="create-room-input"
+        className="cr-input"
       />
 
       <textarea
@@ -74,15 +74,15 @@ const CreateRoom = () => {
         value={roomState.description}
         onChange={handleChange}
         placeholder="Room Description (optional)"
-        className="create-room-textarea"
+        className="cr-textarea"
       />
 
-      {error && <p className="create-room-error">{error}</p>}
+      {error && <p className="cr-error">{error}</p>}
 
       <button
         type="submit"
         disabled={loading || !roomState.roomName.trim()}
-        className="create-room-submit"
+        className="cr-submit"
       >
         {loading ? 'Creating...' : 'Create Room'}
       </button>

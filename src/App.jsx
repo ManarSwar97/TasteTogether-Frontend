@@ -35,7 +35,7 @@ import CreateRoom from './pages/CreateRoom'
 import RoomsList from './pages/RoomsList'
 
 
-import ShowRandonProfile from './pages/ShowRandomProfile'
+import ShowRandomProfile from './pages/ShowRandomProfile'
 const App = () => {
   const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([])
@@ -81,7 +81,7 @@ const App = () => {
 
   return (
     <>
-      <Sidebar handleLogOut={handleLogOut} user={user} />
+      {user && <Sidebar handleLogOut={handleLogOut} user={user} />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -129,10 +129,10 @@ const App = () => {
           <Route path="/updatePost/:post_id" element={<UpdatePost addPost={addPost}/>} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/randomRestaurant" element={<RandomRestaurant />} />
-          <Route path="/profile/randomProfile" element={<ShowRandonProfile />} />
+          <Route path="/profile/randomProfile" element={<ShowRandomProfile />} />
         </Routes>
       </main>
-      <RoomSidebar user={user} />
+      {user && <RoomSidebar user={user} />}
     </>
   )
 }

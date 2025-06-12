@@ -1,0 +1,243 @@
+.recipe-list-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.recipe-list-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.recipe-random-button {
+  display: block;
+  width: 90%;
+  margin: 0 auto 30px auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.recipe-card {
+  background: #fff0f5;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.recipe-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #2980b9;
+}
+
+.recipe-category {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+.recipe-instructions {
+  font-size: 14px;
+  color: #555;
+  max-height: 150px;
+  overflow: auto;
+  margin: 0;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ingredient-item {
+  background-color: #ecf0f1;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.recipe-header {
+  position: relative;
+  margin-bottom: 30px;
+  height: 60px;
+}
+
+.recipe-list-title {
+  font-size: 36px;
+  text-align: center;
+  color: #2c3e50;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.recipe-random-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.recipe-random-button .icon {
+  width: 70px;
+  height: 70px;
+  margin-left: 85%;
+  padding-top: 25px;
+  transition: transform 0.3s;
+}
+
+.recipe-random-button .icon:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.recipe-search-form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  width: 80%;
+  background-color: #fbcddc;
+  color: #333;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #F967D4; 
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #ff3b6e;
+}
+
+.recipe-card {
+  background: #fff0f5;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Add consistent vertical spacing */
+}
+
+.recipe-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0; /* Remove if previously set to avoid double spacing */
+}
+
+.recipe-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #2980b9;
+}
+
+.recipe-category {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.recipe-instructions {
+  font-size: 14px;
+  color: #555;
+  max-height: 150px;
+  overflow: auto;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ingredients-title {
+  margin: 10px 0 5px; /* Small space above and just 5px below */
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove unwanted space */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+@media (max-width: 768px) {
+  .recipe-list-container {
+    padding: 20px 10px;
+  }
+  .recipe-list-title {
+    font-size: 28px;
+  }
+}
+

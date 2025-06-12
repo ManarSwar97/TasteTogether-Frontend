@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import RecipeSearchBar from './RecipeSearchBar'
 import { Link } from 'react-router-dom'
+import '../stylesheet/recipeListAPI.css'
 const RecipeListAPI = () => {
   const [recipes, setRecipes] = useState(null)
   const [error, setError] = useState(null)
@@ -49,14 +50,19 @@ const RecipeListAPI = () => {
 
   return (
     <div className="recipe-list-container">
-      <h1 className="recipe-list-title">Recipes</h1>
+      <div className="recipe-header">
+        <h1 className="recipe-list-title">Recipes</h1>
+        <Link to="/random" className="recipe-random-button">
+          <img
+            className="icon"
+            src="https://i.imgur.com/zv7HkoO.png"
+            alt="Get Random Recipe"
+          />
+        </Link>
+      </div>
+
       {/* the recipeSearchBar call */}
       <RecipeSearchBar onSearch={handleSearch} />
-
-      {/* random recipe button */}
-      <Link to="/random" className="random-button">
-        Get Random Recipe
-      </Link>
 
       {/* preview the recipes with the ingredients */}
       <div className="recipes-grid">

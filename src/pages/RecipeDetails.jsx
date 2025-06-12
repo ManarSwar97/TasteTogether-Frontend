@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import '../stylesheet/RecipeDetails.css'
 const RecipeDetails = () => {
   //extract the id from the url
   const { id } = useParams()

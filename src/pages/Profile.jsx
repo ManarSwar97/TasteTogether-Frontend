@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Comment from '../components/Comment'
-
+import '../stylesheet/profile.css'
 const Profile = () => {
   const { user_id } = useParams() // get user_id from URL
   const [profileUser, setProfileUser] = useState(null)
@@ -41,13 +41,13 @@ const Profile = () => {
     UserAndPosts()
   }, [user_id])
 
-  if (loading) return <p className="profile-loading">Loading profile...</p>
-  if (error) return <p className="profile-error">{error}</p>
-  if (!profileUser) return <p className="profile-no-data">No profile found.</p>
+  if (loading) return <p className="pf-loading">Loading profile...</p>
+  if (error) return <p className="pf-error">{error}</p>
+  if (!profileUser) return <p className="pf-no-data">No profile found.</p>
 
   return (
-    <div className="profile-page">
-      <div className="profile-header">
+    <div className="pf-page">
+      <div className="pf-header">
         <img
           src={
             profileUser.image
@@ -55,28 +55,28 @@ const Profile = () => {
               : '/default-profile.png'
           }
           alt={`${profileUser.username} profile`}
-          className="profile-image"
+          className="pf-image"
         />
 
-        <h2 className="profile-username">{profileUser.username}</h2>
+        <h2 className="pf-username">{profileUser.username}</h2>
       </div>
       {/* if the current user is the same as the profile user */}
       {currentUserId === profileUser._id && (
-        //show the edit profile 
+        //show the edit profile
         <Link to={`/edit-profile/${profileUser._id}`}>
-          <button className="btn btn-edit-profile">Edit Profile</button>
+          <button className="pf-btn pf-btn-edit-profile">Edit Profile</button>
         </Link>
       )}
 
-      <div className="posts-grid">
+      <div className="pf-posts-grid">
         {/* Loop through user posts */}
         {userPosts.map((post) => (
-          <div key={post._id} className="post-wrapper">
+          <div key={post._id} className="pf-post-wrapper">
             {/* Post image */}
             <img
               src={`http://localhost:3001/uploads/${post.postImage}`}
               alt="User post"
-              className="post-image"
+              className="pf-post-image"
               onClick={() => setSelectedPost(post)}
             />
           </div>
@@ -85,39 +85,44 @@ const Profile = () => {
 
       {/* to show selected post in detail with comments and likes */}
       {selectedPost && (
-        <div className="modal" onClick={() => setSelectedPost(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="pf-modal" onClick={() => setSelectedPost(null)}>
+          <div
+            className="pf-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Post image */}
             <img
               src={`http://localhost:3001/uploads/${selectedPost.postImage}`}
               alt="Post preview"
-              className="modal-post-image"
+              className="pf-modal-post-image"
             />
             {/* Post description */}
-            <p className="post-description">{selectedPost.postDescription}</p>
+            <p className="pf-post-description">
+              {selectedPost.postDescription}
+            </p>
 
             {/* Likes count */}
-            <p className="post-likes">
+            <p className="pf-post-likes">
               <strong>Likes:</strong> {selectedPost.likes?.length || 0}
             </p>
 
             {/* Comments section */}
-            <div className="comments-section">
+            <div className="pf-comments-section">
               <Comment postId={selectedPost._id} />
             </div>
 
             {/* show edit/delete buttons only if current user owns this post */}
-            {selectedPost.user?.toString() === currentUserId && (
-              <div className="card-buttons">
+            {selectedPost.user?._id?.toString() === currentUserId && (
+              <div className="pf-card-buttons">
                 <Link
-                  className="edit-link"
+                  className="pf-edit-link"
                   to={`/update/${selectedPost._id}`}
                   onClick={() => setSelectedPost(null)}
                 >
-                  <button className="btn btn-edit">Edit</button>
+                  <button className="pf-btn pf-btn-edit">Edit</button>
                 </Link>
                 <button
-                  className="btn btn-delete"
+                  className="pf-btn pf-btn-delete"
                   onClick={async () => {
                     try {
                       const token = localStorage.getItem('token')
@@ -144,7 +149,7 @@ const Profile = () => {
 
             {/* Close button */}
             <button
-              className="btn btn-close"
+              className="pf-btn pf-btn-close"
               onClick={() => setSelectedPost(null)}
             >
               Close
