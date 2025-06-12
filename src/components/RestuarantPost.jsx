@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const RestuarantPost = ({ restaurants }) => {
   const [search, setSearch] = useState("");
   const seen = new Set();
-//a function used to avoid duplicate values
   const uniqueRestaurants = restaurants.filter((restaurant) => {
     const name = restaurant.fields.name;
     const subtype = restaurant.fields.subtype;
@@ -17,7 +16,6 @@ const RestuarantPost = ({ restaurants }) => {
       return true;
     }
   });
-//search function 
   const filteredRestaurants = uniqueRestaurants.filter((restaurant) => {
     return restaurant.fields.name.toLowerCase().includes(search.toLowerCase());
   });
@@ -43,7 +41,6 @@ const RestuarantPost = ({ restaurants }) => {
       <div className="rest-grid">
         {filteredRestaurants.map((restaurant) => {
           
-            //getting restuarant coordinates and display it
           const [longitude, latitude] = restaurant.geometry.coordinates;
           const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
 

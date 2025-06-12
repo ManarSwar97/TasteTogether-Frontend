@@ -2,11 +2,8 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 const Comment = ({postId}) => {
 
-  //useState for adding a new comment
   const [comment, setComment] = useState("");
-  //useState to save all the comments in an array
   const [comments, setComments] = useState([]);
-  //useState to whether Show all the comments or some of them
   const [showAll, setShowAll] = useState(false);
 
 
@@ -43,11 +40,8 @@ const onClickHandler = async () => {
         }
       }
     );
-    // Use the returned comment from the response
     const newComment = response.data;
-    // Add it to the existing comments array
     setComments((prevComments) => [...prevComments, newComment]);
-    // Clear the input
     setComment("");
   } catch (error) {
     console.error("Error posting comment:", error);
@@ -56,12 +50,10 @@ const onClickHandler = async () => {
 
 
   const onChangeHandler = (e) => {
-    //will take the input value of the comment input field and update the state with that value
     setComment(e.target.value);
   };
 
   const toggleComments = () => {
-    //toggles between showing all comments or only some when user clicks the button
     setShowAll(!showAll);
   };
 
@@ -82,13 +74,11 @@ const onClickHandler = async () => {
           <p className="comment-content">{text.comment}</p>
         </div>
       ))}
-      {/*If there are more than 3 comments, show the "View all" button  */}
       {comments.length > 3 && (
         <button className="toggle-button" onClick={toggleComments}>
           {showAll ? "Hide" : "View all"}
         </button>
       )}
-        {/*input text to write the comments */}
       <div className="comment-form">
         <input
           type="text"
