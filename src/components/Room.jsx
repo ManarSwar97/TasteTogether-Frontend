@@ -1,8 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import SimplePeer from 'simple-peer'
+import {
+  Mic,
+  MicOff,
+  Video,
+  VideoOff,
+  PhoneOff,
+  ScreenShare,
+  MonitorX
+} from 'lucide-react'
 
+import '../stylesheet/Room.css'
 const SERVER_URL = 'http://localhost:3001'
 
 const getImageUrl = (image) => {
@@ -29,6 +39,9 @@ const Room = ({ user }) => {
   const [screenSharing, setScreenSharing] = useState(false)
 
   const { username, image } = user || {}
+
+  // NEW: Manage maximized video id (null means no maximized video)
+  const [maximizedId, setMaximizedId] = useState(null)
 
   useEffect(() => {
     if (!user) {
@@ -226,22 +239,37 @@ const Room = ({ user }) => {
     navigate('/rooms')
   }
 
-  return (
-    <div style={styles.container}>
-      <h2 style={styles.header}>Room ID: {roomId}</h2>
+  // NEW: click handler for toggle maximize/minimize video
+  const handleVideoClick = (id) => {
+    setMaximizedId((prevId) => (prevId === id ? null : id))
+  }
 
-      <div style={styles.videoContainer}>
-        <div style={styles.videoCard}>
-          <div style={styles.userInfo}>
+  return (
+    <div className="room-container">
+      <h2 className="room-header">Room ID: {roomId}</h2>
+
+      <div className="room-video-container">
+        {/* Local video card */}
+        <div
+          className={`room-video-card ${
+            maximizedId === 'local'
+              ? 'maximized'
+              : maximizedId
+              ? 'minimized'
+              : ''
+          }`}
+          onClick={() => handleVideoClick('local')}
+        >
+          <div className="room-user-info">
             {image && (
               <img
                 src={getImageUrl(image)}
                 alt={username}
-                style={styles.profileImage}
+                className="room-profile-image"
                 loading="lazy"
               />
             )}
-            <span style={styles.username}>{username}</span>
+            <span className="room-username">{username}</span>
           </div>
 
           <video
@@ -249,65 +277,82 @@ const Room = ({ user }) => {
             autoPlay
             muted
             playsInline
-            style={styles.video}
+            className="room-video"
           />
 
-          <div style={styles.controls}>
+          <div className="room-controls">
             <button
               onClick={toggleAudio}
-              className={`btn ${audioEnabled ? 'btn-success' : 'btn-danger'}`}
+              className={`room-btn audio-btn ${
+                audioEnabled ? 'enabled' : 'disabled'
+              }`}
               title={audioEnabled ? 'Mute' : 'Unmute'}
             >
-              {audioEnabled ? 'Mute' : 'Unmute'}
+              {audioEnabled ? <Mic size={24} /> : <MicOff size={24} />}
             </button>
+
             <button
               onClick={toggleVideo}
-              className={`btn ${
-                videoEnabled ? 'btn-primary' : 'btn-secondary'
+              className={`room-btn video-btn ${
+                videoEnabled ? 'enabled' : 'disabled'
               }`}
               title={videoEnabled ? 'Stop Video' : 'Start Video'}
             >
-              {videoEnabled ? 'Stop Video' : 'Start Video'}
+              {videoEnabled ? <Video size={24} /> : <VideoOff size={24} />}
             </button>
+
             <button
               onClick={toggleScreenShare}
-              className={`btn ${screenSharing ? 'btn-warning' : 'btn-info'}`}
-              title={screenSharing ? 'Stop Share' : 'Share Screen'}
+              className={`room-btn screen-btn ${screenSharing ? 'active' : ''}`}
+              title={screenSharing ? 'Stop Sharing' : 'Share Screen'}
             >
-              {screenSharing ? 'Stop Share' : 'Share Screen'}
+              {screenSharing ? (
+                <MonitorX size={24} />
+              ) : (
+                <ScreenShare size={24} />
+              )}
             </button>
+
             <button
               onClick={disconnectCall}
-              className="btn btn-danger"
-              title="Leave Call"
+              className="room-btn disconnect-btn"
+              title="Disconnect"
             >
-              Disconnect
+              <PhoneOff size={24} />
             </button>
           </div>
         </div>
 
-        <div style={styles.remoteContainer}>
+        {/* Remote videos */}
+        <div className="room-remote-container">
           {Object.entries(remoteStreams).map(([id, stream]) => (
             <div
               key={id}
-              style={styles.remoteVideoCard}
+              className={`room-remote-video-card ${
+                maximizedId === id
+                  ? 'maximized'
+                  : maximizedId
+                  ? 'minimized'
+                  : ''
+              }`}
               title={usersInfo[id]?.username || 'Unknown'}
+              onClick={() => handleVideoClick(id)}
             >
-              <div style={styles.userInfo}>
+              <div className="room-user-info">
                 {usersInfo[id]?.image && (
                   <img
                     src={getImageUrl(usersInfo[id].image)}
                     alt={usersInfo[id].username || 'User'}
-                    style={styles.profileImage}
+                    className="room-profile-image"
                     loading="lazy"
                   />
                 )}
-                <span style={styles.username}>{usersInfo[id]?.username}</span>
+                <span className="room-username">{usersInfo[id]?.username}</span>
               </div>
               <video
                 autoPlay
                 playsInline
-                style={styles.video}
+                className="room-video"
                 ref={(video) => {
                   if (video && stream) {
                     video.srcObject = stream
@@ -320,91 +365,6 @@ const Room = ({ user }) => {
       </div>
     </div>
   )
-}
-
-const styles = {
-  container: {
-    padding: 20,
-    height: '100%',
-    width: '100%',
-    color: '#eee',
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  header: {
-    marginBottom: 20,
-    textAlign: 'center'
-  },
-  videoContainer: {
-    display: 'flex',
-    gap: 40,
-    overflowX: 'hidden',
-    width: '100%',
-    maxWidth: 1300,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 20
-  },
-  videoCard: {
-    flex: '0 0 450px',
-    backgroundColor: '#333',
-    borderRadius: 12,
-    padding: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    boxShadow: '0 0 14px rgba(255,255,255,0.15)'
-  },
-  remoteContainer: {
-    display: 'flex',
-    gap: 28,
-    overflowX: 'hidden',
-    flex: 1,
-    alignItems: 'center'
-  },
-  remoteVideoCard: {
-    flex: '0 0 450px',
-    backgroundColor: '#333',
-    borderRadius: 12,
-    padding: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    boxShadow: '0 0 14px rgba(255,255,255,0.15)'
-  },
-  userInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 14,
-    marginBottom: 14
-  },
-  profileImage: {
-    width: 48,
-    height: 48,
-    borderRadius: '50%',
-    objectFit: 'cover',
-    boxShadow: '0 0 6px rgba(0,0,0,0.6)'
-  },
-  username: {
-    fontWeight: '700',
-    fontSize: 18
-  },
-  video: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
-    backgroundColor: '#000'
-  },
-  controls: {
-    marginTop: 18,
-    display: 'flex',
-    gap: 14,
-    flexWrap: 'nowrap',
-    justifyContent: 'center',
-    width: '100%'
-  }
 }
 
 export default Room

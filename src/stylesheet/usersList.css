@@ -1,0 +1,107 @@
+.ul-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.ul-search-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.ul-search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.ul-search-bar > :first-child {
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+.ul-random-btn {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.ul-btn-random {
+  padding: 4px 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.ul-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.search-users-container {
+  width: 100%;
+}
+
+.search-users-input {
+  background-color: #22222245;
+}
+
+.ul-title {
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.ul-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.ul-user-card {
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ul-user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ul-user-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem;
+  display: block;
+}
+
+.ul-username {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.ul-fullname {
+  font-size: 0.95rem;
+  color: #555;
+}

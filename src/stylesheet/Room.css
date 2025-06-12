@@ -1,0 +1,232 @@
+:root {
+  --accent-color: #4e94f3;
+  --accent-color-light: #7fb3ff;
+  --text-primary: #e1e1e1;
+  --text-secondary: #b0b7cc;
+  --text-muted: #6b7280;
+  --danger-color: #e55353;
+}
+
+.room-container {
+  min-height: 100vh;
+  padding: 30px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.room-header {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #a0a8b9;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.room-video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 250px;
+  flex-grow: 1;
+  padding-bottom: 40px;
+}
+
+/* Unified card style for local and remote videos */
+.room-video-card,
+.room-remote-video-card {
+  background-color: var(--primary-bg);
+  border-radius: 30px;
+  box-shadow: 0 0 18px rgba(78, 148, 243, 0.3);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-video-card:hover,
+.room-remote-video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 28px rgba(78, 148, 243, 0.5);
+}
+
+/* User info section */
+.room-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #3a3f56;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  background: var(--secondary-bg);
+  user-select: text;
+}
+
+/* Profile image */
+.room-profile-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  object-fit: cover;
+  box-shadow: 0 0 14px var(--accent-color);
+  background: var(--primary-bg);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Video element styling */
+.room-video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: #000;
+  transition: background-color 0.3s ease;
+  border-radius: 0 0 30px 30px;
+  user-select: none;
+}
+
+/* Controls container */
+.room-controls {
+  margin: 24px 0 30px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  user-select: none;
+}
+
+/* Buttons styling */
+.room-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--secondary-bg);
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(46, 52, 78, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  font-weight: 700;
+}
+
+.room-btn:hover {
+  background: var(--accent-color);
+  color: var(--text-primary);
+  transform: scale(1.15);
+  box-shadow: 0 0 24px var(--accent-color), 0 0 38px var(--accent-color-light);
+}
+
+/* Audio & Video button states */
+.audio-btn.enabled,
+.video-btn.enabled {
+  background: var(--accent-color);
+  color: var(--text-primary);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 36px var(--accent-color-light);
+}
+
+.audio-btn.disabled,
+.video-btn.disabled {
+  background: var(--text-muted);
+  color: #cbd5e1;
+  box-shadow: none;
+}
+
+/* Screen share button */
+.screen-btn {
+  background: var(--text-muted);
+  color: var(--accent-color);
+  box-shadow: 0 0 14px var(--accent-color-light);
+}
+
+.screen-btn.active {
+  background: var(--accent-color);
+  color: var(--text-primary);
+  box-shadow: 0 0 24px var(--accent-color), 0 0 36px var(--accent-color-light);
+}
+
+/* Disconnect button */
+.disconnect-btn {
+  background: var(--danger-color);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(229, 83, 83, 0.4), 0 0 30px rgba(229, 83, 83, 0.7);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.disconnect-btn:hover {
+  background: #ff4c4c;
+  box-shadow: 0 0 28px rgba(255, 76, 76, 0.6), 0 0 44px rgba(255, 76, 76, 0.8);
+  transform: scale(1.25);
+}
+
+.room-video-card.maximized,
+.room-remote-video-card.maximized {
+  grid-column: 1 / -1; /* take full width of the grid */
+  max-width: 100%;
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 0 40px var(--accent-color-light);
+}
+
+/* Minimized videos (others when one is maximized) */
+.room-video-card.minimized,
+.room-remote-video-card.minimized {
+  opacity: 0.3;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.room-video-card,
+.room-remote-video-card {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+/* Responsive tweaks */
+@media (max-width: 1000px) {
+  .room-video-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .room-btn {
+    width: 54px;
+    height: 54px;
+  }
+
+  .room-profile-image {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .room-video-container {
+    grid-template-columns: 1fr;
+  }
+
+  .room-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .room-profile-image {
+    width: 32px;
+    height: 32px;
+  }
+}

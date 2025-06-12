@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import '../stylesheet/randomRecipe.css'
 const RandomRecipe = () => {
   const [randomRecipe, setRandomRecipe] = useState(null)
   const [error, setError] = useState('')
@@ -33,10 +33,14 @@ const RandomRecipe = () => {
 
   return (
     <div className="random-recipe-container">
-      <h1>Random Recipe</h1>
 
       {/* random recipe button */}
       <button onClick={handleRandomRecipe} className="random-button">
+        <img
+          className="icon"
+          src="https://i.imgur.com/zv7HkoO.png"
+          alt="Get Random Recipe"
+        />
         Get Random Recipe
       </button>
 
@@ -77,7 +81,9 @@ const RandomRecipe = () => {
               <iframe
                 width="100%"
                 height="400"
-                src={`https://www.youtube.com/embed/${getYoutubeId(randomRecipe.strYoutube)}`}
+                src={`https://www.youtube.com/embed/${getYoutubeId(
+                  randomRecipe.strYoutube
+                )}`}
                 title="Recipe Video"
                 allow="autoplay; picture-in-picture"
                 allowFullScreen

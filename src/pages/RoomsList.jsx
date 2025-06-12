@@ -1,24 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
-
+import '../stylesheet/RoomList.css'
 const RoomsList = () => {
   const [rooms, setRooms] = useState([])
   const navigate = useNavigate()
-
   const currentUserId = localStorage.getItem('userId')
 
   useEffect(() => {
-    const Rooms = async () => {
+    const rooms = async () => {
       try {
         const response = await axios.get('http://localhost:3001/room')
-        console.log('Fetched rooms:', response.data.rooms)
         setRooms(response.data.rooms || [])
       } catch (error) {
         console.error('Failed to fetch rooms:', error)
       }
     }
-    Rooms()
+    rooms()
   }, [])
 
   const toggleRoomActive = async (roomId, currentStatus) => {
@@ -29,8 +27,6 @@ const RoomsList = () => {
         { isActive: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       )
-
-      console.log('Backend response:', response.data)
 
       if (!response.data.room) {
         throw new Error('No updated room returned from backend')
@@ -48,15 +44,16 @@ const RoomsList = () => {
   }
 
   return (
-    <div className="rooms-list">
-      <Link to="/create" className="rooms-list__create-link">
+    <div className="rl-container">
+      <Link to="/create" className="rl-create-link">
         + Create New Room
       </Link>
-      <h2 className="rooms-list__title">Available Rooms</h2>
+      <h2 className="rl-title">Available Rooms</h2>
+
       {rooms.length === 0 ? (
-        <p className="rooms-list__empty">No rooms available. Create one!</p>
+        <p className="rl-empty-message">No rooms available. Create one!</p>
       ) : (
-        <ul className="rooms-list__items">
+        <ul className="rl-list">
           {rooms.map((room, index) => {
             const isCreator = room.createdBy?.toString() === currentUserId
             const isInactive = room.isActive === false
@@ -64,17 +61,15 @@ const RoomsList = () => {
             return (
               <li
                 key={room._id || room.roomId || index}
-                className={`rooms-list__item ${
-                  isInactive ? 'rooms-list__item--inactive' : ''
-                }`}
+                className={`rl-item ${isInactive ? 'rl-item--inactive' : ''}`}
               >
-                <h3 className="rooms-list__item-title">{room.roomName}</h3>
+                <h3 className="rl-item-name">{room.roomName}</h3>
                 {room.description && (
-                  <p className="rooms-list__item-description">{room.description}</p>
+                  <p className="rl-item-description">{room.description}</p>
                 )}
 
                 {isCreator && (
-                  <label className="rooms-list__active-toggle-label">
+                  <label className="rl-toggle-label">
                     Active:{' '}
                     <input
                       type="checkbox"
@@ -87,8 +82,8 @@ const RoomsList = () => {
                 )}
 
                 <button
-                  className={`rooms-list__join-button ${
-                    isInactive ? 'rooms-list__join-button--inactive' : ''
+                  className={`rl-join-btn ${
+                    isInactive ? 'rl-join-btn--inactive' : ''
                   }`}
                   onClick={() => {
                     if (!isInactive) {

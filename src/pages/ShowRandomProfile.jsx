@@ -1,5 +1,5 @@
 import RandomProfile from "./RandomProfile";
-const ShowRandonProfile = () =>{
+const ShowRandomProfile = () =>{
 
 
 return (
@@ -10,4 +10,4 @@ return (
 
 
 }
-export default ShowRandonProfile;
+export default ShowRandomProfile;

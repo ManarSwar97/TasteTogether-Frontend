@@ -1,0 +1,70 @@
+.room-sidebar {
+  width: 10%;
+  min-width: 120px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.room-bar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.room-bar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  transition: color 0.3s, font-weight 0.3s;
+  background-color: transparent;
+  padding: 5px 0;
+}
+
+.room-bar-links a:hover {
+  color: #000;
+  font-weight: 600;
+}
+
+.room-bar-bottom {
+  margin-top: auto;
+  width: 100%;
+}
+
+.room-bar-bottom button {
+  width: 100%;
+  padding: 8px 0;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.room-bar-bottom button:hover {
+  background-color: #d8c5a7;
+  border: 0;
+  color: #000;
+}
+
+.icon {
+  width: 40;
+  height: 40px;
+  object-fit: contain;
+}
