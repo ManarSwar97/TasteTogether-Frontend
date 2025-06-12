@@ -239,12 +239,10 @@ main {
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #f9fafb;
   padding: 20px;
 }
 
 .random-container {
-  background-color: #ffffff;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
