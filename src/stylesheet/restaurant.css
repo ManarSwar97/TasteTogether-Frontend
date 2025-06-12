@@ -1,17 +1,17 @@
-body{
+body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #2c3e50;
 }
-.random-button,
-.random-btn,
+
+/* Button Styles */
 .direction-button {
   width: 100%;
   max-width: 450px;
   padding: 16px;
   border: none;
   border-radius: 14px;
-  background-color: #7ea6ce;
-  color: white;
+  background-color: #d1427241; /* Soft pink */
+  color: #c2185b;
   font-size: 18px;
   font-weight: 600;
   margin-top: 12px;
@@ -20,16 +20,36 @@ body{
   transition: background 0.3s ease;
 }
 
+.random-button,
+.random-btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background-color: #f0629141; /* Soft pink */
+  color: #c2185b;              /* Dark pink text */
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  text-align: center;
+}
 
+.random-button:hover,
+.random-btn:hover {
+  background-color: #ec407a;
+}
 
-/* Heading styles */
+/* Headings */
 .random-title {
   font-size: 40px;
   text-align: center;
   color: #2c3e50;
 }
 
-/* Top section layout */
+/* Top Section Layout */
 .top-section {
   display: flex;
   flex-direction: row;
@@ -38,7 +58,7 @@ body{
   margin-bottom: 20px;
 }
 
-/* Search input field */
+/* Search Input Field */
 .search-rest {
   width: 100%;
   max-width: 500px;
@@ -56,6 +76,7 @@ body{
   color: #2c3e50;
 }
 
+/* Restaurant Grid */
 .rest-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -64,106 +85,112 @@ body{
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-
 }
 
-/* Restaurant card styling */
+@media (min-width: 640px) {
+  .rest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rest-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Restaurant Card */
 .rest-card {
   background-color: white;
-  border-radius: 18px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
   transition: transform 0.3s ease;
 }
 
 .rest-card:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .rest-name {
-  font-size: 22px;
-  font-weight: 700;
-  color: #646cff;
-  margin-bottom: 10px;
-  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1052a8;
+  margin-bottom: 0.5rem;
 }
 
-/* Category / Subtype */
+/* Category and Value */
 .label {
   font-weight: 500;
-  color: #2c3e50;
-}
-.value {
-  font-size: 16px;
-  color: #3f5872;
-  font-style: italic;
-  margin-bottom: 16px;
-  font-weight: 500;
+  color: #1052a8;
 }
 
-/* Random restaurant main section */
+.value {
+  color: #1052a8;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+/* Random Restaurant Section */
 .random-rest {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #fcf7f1;
   padding: 20px;
-  margin-left: 120px;  /* space for left sidebar */
-  margin-right: 120px; /* space for right sidebar */
-  box-sizing: border-box;
 }
 
-/* Main content box */
+/* Random Restaurant Card */
 .random-container {
-  background-color: #ffffff;
+  background-color: #fff0f5;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   width: 100%;
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
 }
 
-/* Restaurant name */
 .random-container h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #5a4b3d;
+  font-size: 28px;
+  font-weight: bold;
+  color: #c2185b;
   margin-bottom: 12px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Georgia', serif;
 }
 
-/* Category text */
 .random-container h4 {
   font-size: 18px;
-  color: #927c6b;
+  color: #d81b60;
   font-style: italic;
   margin-bottom: 24px;
 }
 
-/* Direction link button */
+/* Direction Link Button */
 .direction-btn {
   display: inline-block;
   margin-bottom: 24px;
   padding: 12px 20px;
-  background-color: #e9d8c2;
-  color: #806D58;
+  background-color: #f0629141;
+  color: #c2185b;
   text-decoration: none;
-  font-weight: 600;
-  border-radius: 14px;
-  font-size: 15px;
+  font-weight: bold;
+  border-radius: 30px;
+  font-size: 16px;
   width: 100%;
   box-sizing: border-box;
-  transition: background 0.2s ease;
+  transition: background-color 0.3s;
 }
 
 .direction-btn:hover {
-  background-color: #d2bda7;
+  background-color: #ec407a;
 }
-a{
-    color: white;
+
+/* Link Styling */
+a {
+  color: white;
+  text-decoration: none;
 }
