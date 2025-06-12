@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import './App.css'
 import './stylesheet/mainHome.css'
 import './stylesheet/restaurant.css'
+import './stylesheet/signin.css'
+import './stylesheet/register.css'
 
 import SignIn from './pages/SignIn'
 import MainHome from './pages/MainHome'
