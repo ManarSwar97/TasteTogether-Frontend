@@ -13,6 +13,7 @@
   padding: 20px 10px;
   box-sizing: border-box;
   background-color: transparent;
+  
 }
 
 .room-bar-links {
@@ -68,3 +69,45 @@
   height: 40px;
   object-fit: contain;
 }
+@media (max-width: 430px) {
+  .room-sidebar {
+    position: fixed;
+    bottom: 0;       /* fixed at bottom */
+    top: auto;       /* unset top */
+    right: 0;
+    width: 100%;
+    height: 40px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    border-left: none;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .room-bar-links {
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 0;
+    width: auto;
+    align-items: center;
+  }
+
+  .room-bar-links a {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+
+  .room-bar-bottom {
+    display: none;  /* hide the bottom button for small screens */
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+

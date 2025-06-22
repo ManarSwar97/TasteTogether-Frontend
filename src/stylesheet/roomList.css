@@ -98,3 +98,111 @@
   background-color: #ccc068;
   cursor: not-allowed;
 }
+
+/* For large tablets / small desktops (up to 800px) */
+@media (max-width: 800px) {
+  .rl-container {
+    max-width: 90%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+  }
+
+  .rl-create-link {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .rl-title {
+    font-size: 1.5rem;
+  }
+
+  .rl-item-name {
+    font-size: 1.4rem;
+  }
+
+  .rl-item-description {
+    font-size: 1.1rem;
+  }
+}
+
+/* For medium phones (up to 600px) */
+@media (max-width: 600px) {
+  .rl-container {
+    max-width: 100%;
+    margin: 1rem 1rem;
+    padding: 0.8rem;
+  }
+
+  .rl-create-link {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .rl-title {
+    font-size: 1.3rem;
+  }
+
+  .rl-item-name {
+    font-size: 1.2rem;
+  }
+
+  .rl-item-description {
+    font-size: 1rem;
+  }
+
+  .rl-join-btn {
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+/* For small phones like iPhone SE, 430px and below */
+@media (max-width: 430px) {
+  .rl-container {
+    max-width: 100%;
+    margin: 1rem 0.5rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .rl-create-link {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .rl-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .rl-empty-message {
+    font-size: 0.95rem;
+  }
+
+  .rl-list {
+    gap: 0.7rem;
+  }
+
+  .rl-item {
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .rl-item-name {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .rl-item-description {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .rl-toggle-label {
+    font-size: 0.8rem;
+  }
+
+  .rl-join-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}

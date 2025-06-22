@@ -78,18 +78,6 @@ body {
   margin-right: auto;
   box-sizing: border-box;
 }
-@NK Media
- (min-width: 640px) {
-  .rest-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@NK Media
- (min-width: 1024px) {
-  .rest-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 /* Restaurant Card */
 .rest-card {
   background-color: white;
@@ -173,4 +161,27 @@ body {
 a {
   color: white;
   text-decoration: none;
+}
+
+@media (max-width: 430px) {
+  .rest-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 640px) {
+  .rest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rest-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

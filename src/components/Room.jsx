@@ -49,6 +49,9 @@ const Room = ({ user }) => {
       return
     }
 
+  document.body.classList.add('room-page');
+  return () => document.body.classList.remove('room-page');
+
     socketRef.current = io(SERVER_URL)
 
     socketRef.current.emit('join-room', { roomId, username, image })

@@ -1,5 +1,14 @@
+.rur-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #2c3e50;
+}
+
 .rur-container h3 {
-  font-size: 15px;
+  font-size: 28px;
   margin-bottom: 30px;
   color: #2e774c;
 }
@@ -9,16 +18,17 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-color: #27ae5f40; /* transparent green */
+  background-color: #27ae5f40;
   color: #2e774c;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 12px 20px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 16px;
-  margin: 30px auto;
-  transition: all 0.3s ease;
+  margin: 10px 10px 30px;
+  transition: background-color 0.3s, transform 0.3s;
   text-align: center;
+  border: none;
 }
 
 .rur-btn-random-recipe:hover {
@@ -31,20 +41,20 @@
 .rur-btn-random-recipe .rur-icon {
   width: 24px;
   height: 24px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
 
 .rur-btn-random-recipe:hover .rur-icon {
-  transform: rotate(15deg) scale(1.2);
+  transform: rotate(10deg) scale(1.1);
 }
 
 .rur-recipe-card {
-  background-color: #d4f5c7; 
-  padding: 35px;
-  border-radius: 25px;
-  box-shadow: 0 6px 18px rgba(39, 174, 96, 0.15);
+  background-color: #d4f5c7;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   text-align: left;
-  margin-top: 30px;
+  margin-top: 20px;
   color: #2c3e50;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -55,13 +65,13 @@
 }
 
 .rur-recipe-card h2 {
-  font-size: 25px;
-  margin-bottom: 15px;
+  font-size: 28px;
+  margin-bottom: 10px;
   color: #27ae60;
 }
 
 .rur-recipe-card p {
-  margin: 12px 0;
+  margin: 10px 0;
   line-height: 1.6;
   color: #444;
 }
@@ -87,11 +97,146 @@
   max-width: 320px;
   max-height: 350px;
   object-fit: cover;
-  border-radius: 20px;
-  margin: 25px 0;
+  border-radius: 15px;
+  margin: 20px 0;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.rur-recipe-card h4 {
+  margin-top: 25px;
+  font-size: 18px;
+  color: #27ae60;
+}
+
+.rur-recipe-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rur-recipe-card li {
+  background-color: #e8fbe8;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.video-container {
+  margin-top: 30px;
+}
+
+.video-container h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #1e8449;
+}
+
+iframe {
+  border-radius: 10px;
+  border: none;
 }
 
 .rur-random-recipe-content {
   flex: 1;
 }
+
+/* Tablets and medium screens (up to 768px) */
+@media screen and (max-width: 768px) {
+  .rur-container {
+    padding: 30px 15px;
+  }
+
+  .rur-container h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .rur-btn-random-recipe {
+    padding: 10px 16px;
+    font-size: 14px;
+    margin: 8px 6px 20px;
+  }
+
+  .rur-btn-random-recipe .rur-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .rur-recipe-card {
+    padding: 20px;
+  }
+
+  .rur-recipe-card h2 {
+    font-size: 22px;
+  }
+
+  .rur-user-info-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rur-user-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rur-recipe-image.rur-max-width-300 {
+    max-height: 250px;
+  }
+
+  .rur-recipe-card h4,
+  .video-container h4 {
+    font-size: 16px;
+  }
+
+  .rur-recipe-card li {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+/* Small phones (up to 480px) */
+@media screen and (max-width: 480px) {
+  .rur-container {
+    padding: 20px 10px;
+  }
+
+  .rur-container h3 {
+    font-size: 20px;
+  }
+
+  .rur-btn-random-recipe {
+    padding: 8px 14px;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .rur-recipe-card {
+    padding: 15px;
+  }
+
+  .rur-recipe-card h2 {
+    font-size: 20px;
+  }
+
+  .rur-recipe-image.rur-max-width-300 {
+    max-height: 200px;
+  }
+
+  .rur-recipe-card li {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+  }
+}
+

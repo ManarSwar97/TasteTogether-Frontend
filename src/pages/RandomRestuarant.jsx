@@ -45,6 +45,7 @@ const RandomRestaurant = () => {
     : null;
 
 return (
+  
     <div className="random-rest">
       <div className="random-container">
         <h2>{restaurant || "Click below to pick a restaurant"}</h2>
@@ -64,6 +65,7 @@ return (
         </button>
       </div>
     </div>
+
   );
 };
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat:wght@600&display=swap');
+
 /* Reset and base styles */
 * {
   box-sizing: border-box;
@@ -6,7 +8,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #ffefd5;
+  background-color: #FFFBF3;
   font-family: Arial, sans-serif;
   height: auto;
   min-height: 100%;
@@ -17,14 +19,14 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  background-color: #ffefd5;
+  background-color: #FFFBF3;
 }
 
 /* Main content should just grow with content */
 main {
   flex: 1;
   width: 100%;
-  background-color: #ffefd5;
+  background-color: #FFFBF3;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -239,12 +241,10 @@ main {
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #f9fafb;
   padding: 20px;
 }
 
 .random-container {
-  background-color: #ffffff;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -352,7 +352,202 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ffefd5;
+  background-color: #FFFBF3;
   font-family: Arial, sans-serif;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, .home-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+/* Tablet screens (up to 1024px) */
+@media (max-width: 1024px) {
+  main {
+    padding: 15px;
+  }
+
+  .register-container,
+  .signin-container {
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 12px;
+  }
+
+  .register-heading,
+  .signin-heading {
+    font-size: 1.3rem;
+  }
+
+  .post-card {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .post-card img {
+    height: 300px;
+  }
+
+  .post-card p {
+    font-size: 16px;
+  }
+
+  .rest-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .rest-card {
+    padding: 0.8rem;
+  }
+
+  .rest-name {
+    font-size: 1.1rem;
+  }
+
+  .random-container {
+    max-width: 400px;
+    padding: 30px;
+  }
+
+  .random-container h2 {
+    font-size: 22px;
+  }
+
+  .random-container h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .random-btn,
+  .direction-btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .search-input {
+    width: 200px;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .search-button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .search-users-container {
+    max-width: 350px;
+    padding: 10px 0;
+    margin: 15px auto;
+  }
+
+  .search-users-container input[type='text'] {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* Mobile phones (up to 480px) */
+@media (max-width: 480px) {
+  main {
+    padding: 10px;
+  }
+
+  .register-container,
+  .signin-container {
+    max-width: 100%;
+    margin: 20px 10px;
+    padding: 10px;
+  }
+
+  .register-heading,
+  .signin-heading {
+    font-size: 1.1rem;
+  }
+
+  .post-card {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .post-card img {
+    height: 220px;
+  }
+
+  .post-card p {
+    font-size: 14px;
+  }
+
+  .rest-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .rest-card {
+    padding: 0.6rem;
+  }
+
+  .rest-name {
+    font-size: 1rem;
+  }
+
+  .random-container {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .random-container h2 {
+    font-size: 20px;
+  }
+
+  .random-container h4 {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .random-btn,
+  .direction-btn {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .search-input {
+    width: 100%;
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .search-button {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin-left: 6px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .search-users-container {
+    max-width: 100%;
+    padding: 8px 10px;
+    margin: 10px auto;
+  }
+
+  .search-users-container input[type='text'] {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}

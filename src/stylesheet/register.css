@@ -1,18 +1,18 @@
 .register-container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 80px auto;
   padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #806D58;
+  color: #2c3e50;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .register-heading {
   text-align: center;
   margin-bottom: 10px;
-  color: #806D58;
+  color: #2c3e50;
   font-size: 1.6rem;
   font-weight: 600;
 }
@@ -21,11 +21,11 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 1rem;
-  color: #5f574d;
+  color: #2c3e50;
 }
 
 .register-login-link a {
-  color: #806D58;
+  color: #2c3e50;
   text-decoration: none;
   font-weight: 600;
 }
@@ -48,28 +48,28 @@
 .input-wrapper label {
   margin-bottom: 6px;
   font-weight: 600;
-  color: #806D58;
+  color: #2c3e50;
   font-size: 1rem;
 }
 
 .input-wrapper input {
   padding: 10px 14px;
-  border: 1.5px solid #806D58;
+  border: 1.5px solid #2c3e50;
   border-radius: 6px;
   font-size: 1rem;
-  color: #806D58;
+  color: #2c3e50;
   background-color: #fff;
   transition: border-color 0.3s;
 }
 
 .input-wrapper input:focus {
-  border-color: #5f574d;
+  border-color: #1abc9c;
   outline: none;
 }
 
 .register-button {
   padding: 12px;
-  background-color: #806D58;
+  background-color: #2c3e50;
   color: white;
   border: none;
   border-radius: 8px;
@@ -80,11 +80,71 @@
 }
 
 .register-button:hover {
-  background-color: #5f574d;
+  background-color: #1a252f;
 }
 
 .register-button:disabled {
-  background-color: #ccc;
+  background-color: #bdc3c7;
   color: #fff;
   cursor: not-allowed;
+}
+
+/* Tablets (≤768px) */
+@media screen and (max-width: 768px) {
+  .register-container {
+    margin: 60px 20px;
+    padding: 25px;
+  }
+
+  .register-heading {
+    font-size: 1.4rem;
+  }
+
+  .register-login-link {
+    font-size: 0.95rem;
+  }
+
+  .input-wrapper label {
+    font-size: 0.95rem;
+  }
+
+  .input-wrapper input {
+    font-size: 0.95rem;
+    padding: 9px 12px;
+  }
+
+  .register-button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+/* Small phones (≤480px) */
+@media screen and (max-width: 480px) {
+  .register-container {
+    margin: 40px 10px;
+    padding: 20px;
+  }
+
+  .register-heading {
+    font-size: 1.2rem;
+  }
+
+  .register-login-link {
+    font-size: 0.9rem;
+  }
+
+  .input-wrapper label {
+    font-size: 0.9rem;
+  }
+
+  .input-wrapper input {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .register-button {
+    font-size: 0.9rem;
+    padding: 9px;
+  }
 }

@@ -71,3 +71,57 @@
 .rp-btn-random:hover {
   background-color: #edcaff;
 }
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  .rp-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .rp-profile-image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .rp-title {
+    font-size: 1.5rem;
+  }
+
+  .rp-username {
+    font-size: 1.2rem;
+  }
+
+  .rp-fullname {
+    font-size: 1rem;
+  }
+
+  .rp-btn-random {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Extra small devices (phones under 400px) */
+@media screen and (max-width: 400px) {
+  .rp-container {
+    margin: 1rem 0.5rem;
+  }
+
+  .rp-profile-image {
+    width: 75px;
+    height: 75px;
+  }
+
+  .rp-title {
+    font-size: 1.3rem;
+  }
+
+  .rp-username {
+    font-size: 1.1rem;
+  }
+
+  .rp-btn-random {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}

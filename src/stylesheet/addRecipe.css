@@ -55,3 +55,32 @@
 .nr-submit-btn:hover {
   background-color: #1e8449;
 }
+
+/* Media Query for Phone Sizes */
+@media (max-width: 480px) {
+  .nr-form {
+    margin: 30px 20px;
+    padding: 20px 25px;
+    border-radius: 12px;
+  }
+
+  .nr-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .nr-input,
+  .nr-textarea,
+  .nr-select,
+  .nr-file-input {
+    padding: 10px 12px;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .nr-submit-btn {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+  }
+}

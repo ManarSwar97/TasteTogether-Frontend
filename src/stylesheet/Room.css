@@ -33,10 +33,11 @@
   gap: 28px;
   width: 100%;
   max-width: 1000px;
-  max-height: 250px;
-  flex-grow: 1;
+  /* Removed max-height: 250px; */
   padding-bottom: 40px;
+  margin-bottom: 20px;
 }
+
 
 /* Unified card style for local and remote videos */
 .room-video-card,
@@ -196,12 +197,23 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
+.room-page .sidebar,
+.room-page .room-sidebar {
+  display: none !important;
+}
 
 
-/* Responsive tweaks */
-@media (max-width: 1000px) {
+
+/* Up to 800px (large tablets / small desktops) */
+@media (max-width: 800px) {
+  .room-container {
+    padding: 25px 30px;
+  }
+
   .room-video-container {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 90%;
   }
 
   .room-btn {
@@ -210,14 +222,30 @@
   }
 
   .room-profile-image {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .room-header {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .room-user-info {
+    font-size: 0.95rem;
   }
 }
 
+/* Up to 600px (medium phones) */
 @media (max-width: 600px) {
+  .room-container {
+    padding: 20px 25px;
+  }
+
   .room-video-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 100%;
   }
 
   .room-btn {
@@ -226,7 +254,48 @@
   }
 
   .room-profile-image {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .room-header {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .room-user-info {
+    font-size: 0.9rem;
   }
 }
+
+/* Up to 430px (small phones like iPhone SE) */
+@media (max-width: 430px) {
+  .room-container {
+    padding: 15px 15px;
+  }
+
+  .room-video-container {
+    grid-template-columns: 1fr; /* stack vertically */
+    gap: 20px;
+  }
+
+  .room-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .room-profile-image {
+    width: 28px;
+    height: 28px;
+  }
+
+  .room-header {
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+  }
+
+  .room-user-info {
+    font-size: 0.85rem;
+  }
+}
+

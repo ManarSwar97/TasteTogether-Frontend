@@ -105,3 +105,85 @@
   font-size: 0.95rem;
   color: #555;
 }
+
+@media (max-width: 768px) {
+  .ul-container {
+    padding: 0 0.5rem;
+    margin: 1.5rem auto;
+  }
+
+  .ul-search-bar-wrapper {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .ul-search-bar > :first-child {
+    min-width: 180px;
+  }
+
+  .ul-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ul-title {
+    font-size: 1.3rem;
+    margin-top: 0.8rem;
+  }
+
+  .ul-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .ul-user-card {
+    padding: 0.75rem;
+  }
+
+  .ul-user-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .ul-username {
+    font-size: 1rem;
+  }
+
+  .ul-fullname {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ul-search-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ul-search-bar > :first-child {
+    min-width: 100%;
+  }
+
+  .ul-btn-random {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ul-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .ul-user-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .ul-username {
+    font-size: 0.95rem;
+  }
+
+  .ul-fullname {
+    font-size: 0.8rem;
+  }
+}

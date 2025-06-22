@@ -232,12 +232,115 @@
 }
 
 
-@media (max-width: 768px) {
+/* Tablets and medium screens (≤768px) */
+@media screen and (max-width: 768px) {
   .recipe-list-container {
     padding: 20px 10px;
   }
+
   .recipe-list-title {
     font-size: 28px;
   }
+
+  .recipe-random-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    width: 95%;
+  }
+
+  .recipe-random-button .icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 70%;
+    padding-top: 15px;
+  }
+
+  .search-input {
+    width: 70%;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .search-button {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .recipe-name {
+    font-size: 18px;
+  }
+
+  .recipe-instructions {
+    font-size: 13px;
+  }
+
+  .ingredient-item {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 }
+
+/* Small phones (≤480px) */
+@media screen and (max-width: 480px) {
+  .recipe-list-container {
+    padding: 15px 5px;
+  }
+
+  .recipe-list-title {
+    font-size: 22px;
+  }
+
+  .recipe-random-button {
+    font-size: 13px;
+    padding: 6px 12px;
+    width: 100%;
+  }
+
+  .recipe-random-button .icon {
+    width: 40px;
+    height: 40px;
+    margin-left: 65%;
+    padding-top: 10px;
+  }
+
+  .search-input {
+    width: 65%;
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+
+  .search-button {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .recipe-card {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .recipe-name {
+    font-size: 16px;
+  }
+
+  .recipe-instructions {
+    font-size: 12px;
+    max-height: 120px;
+  }
+
+  .ingredients-title {
+    font-size: 14px;
+  }
+
+  .ingredient-item {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .recipes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 

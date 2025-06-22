@@ -169,3 +169,45 @@
 .pf-btn-edit-profile:hover {
   background-color: #595959;
 }
+
+@media screen and (max-width: 768px) {
+  .pf-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pf-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .pf-posts-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 posts per row on smaller screens */
+    gap: 0.5rem;
+  }
+
+  .pf-modal-content {
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  .pf-modal-post-image {
+    max-height: 250px;
+  }
+
+  .pf-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .pf-btn-close {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .pf-btn-edit-profile {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}

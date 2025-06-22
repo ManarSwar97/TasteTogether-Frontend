@@ -45,7 +45,7 @@ const RecipeListAPI = () => {
     }
   }
   //show loading or not found
-  if (recipes === null) return <div>Loading recipes...</div>
+  if (recipes === null) return <div></div>
   if (recipes.length === 0) return <div>No recipes found.</div>
 
   return (

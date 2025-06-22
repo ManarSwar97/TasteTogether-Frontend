@@ -1,7 +1,7 @@
 .ur-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 40px 30px; /* increased side padding */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
 }
@@ -85,12 +85,12 @@
 .ur-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
+  gap: 30px; /* controls spacing between cards */
 }
 
 .ur-recipe-card {
   background: #e6fccc;
-  padding: 20px;
+  padding: 20px 20px; /* increased left/right padding */
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -170,4 +170,110 @@
 .ur-card-buttons {
   align-items: center;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .ur-container {
+    padding: 20px 15px;
+    max-width: 100%;
+  }
+
+  .ur-page-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .ur-btn-add-recipe,
+  .ur-btn-edit,
+  .ur-btn-delete {
+    width: 100%;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .ur-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .ur-recipe-card {
+    padding: 15px 15px;
+  }
+
+  .ur-recipe-name {
+    font-size: 18px;
+  }
+
+  .ur-recipe-description,
+  .ur-recipe-ingredients,
+  .ur-recipe-instructions,
+  .ur-recipe-category {
+    font-size: 13px;
+  }
+
+  .ur-recipe-user-info {
+    margin-bottom: 8px;
+  }
+
+  .ur-user-recipe-profile-image {
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+  }
+
+  .ur-username-user-recipe {
+    font-size: 13px;
+  }
+
+  .ur-recipe-actions-centered {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .ur-btn-random-recipe .ur-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ur-page-title {
+    font-size: 24px;
+  }
+
+  .ur-btn-add-recipe,
+  .ur-btn-edit,
+  .ur-btn-delete {
+    font-size: 13px;
+  }
+
+  .ur-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .ur-recipe-name {
+    font-size: 16px;
+  }
+
+  .ur-recipe-description,
+  .ur-recipe-ingredients,
+  .ur-recipe-instructions,
+  .ur-recipe-category {
+    font-size: 12px;
+  }
+
+  .ur-user-recipe-profile-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ur-username-user-recipe {
+    font-size: 12px;
+  }
+
+  .ur-recipe-actions-centered {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
